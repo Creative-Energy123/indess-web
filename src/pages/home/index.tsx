@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { Activity, Anchor, ArrowUpRight, Cog, FlaskConical, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import DisplayHeading from "../../components/DisplayHeading";
@@ -9,8 +9,10 @@ import SectionLabel from "../../components/SectionLabel";
 import hero from "../../assets/cin-hero.jpg";
 import imgCEO from "../../assets/cin-ceo.jpg";
 import imgLogistics from "../../assets/cin-logistics.jpg";
-import imgProcess from "../../assets/cin-process.jpg";
+import imgManufacturing from "../../assets/cin-manufacturing.jpg";
 import { clients, industries, partners, products, services } from "./data";
+
+const SERVICE_ICONS = [Cog, Activity, Zap, FlaskConical, Anchor] as const;
 
 export default function HomePage() {
   return (
@@ -120,10 +122,64 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="expertise" className="section-space-lg bg-white">
+      <section id="services" className="section-space-lg relative overflow-hidden bg-primary-dark text-white">
+        <img src={imgManufacturing} alt="" className="absolute inset-0 h-full w-full object-cover opacity-15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-dark via-primary-dark/90 to-primary-dark" />
+        <div className="page-shell relative z-10">
+          <Reveal>
+            <div className="mb-20 grid gap-12 lg:grid-cols-12">
+              <div className="lg:col-span-6">
+                <div className="mb-8 flex items-center gap-4">
+                  <span className="text-gold text-[11px] uppercase tracking-editorial">03</span>
+                  <span className="rule-gold h-px w-10" />
+                  <span className="text-[11px] uppercase tracking-editorial text-white/60">Our Expertise</span>
+                </div>
+                <h2 className="font-display-light text-5xl leading-[1.02] tracking-tight text-white md:text-6xl lg:text-7xl">
+                  Specialised across five core domains.
+                </h2>
+              </div>
+              <div className="text-[15px] font-light leading-[1.8] text-white/70 lg:col-span-5 lg:col-start-8 lg:pt-8">
+                INDESS provides a comprehensive range of products tailored to the unique needs of our
+                clients and engineered for performance, reliability and the highest safety standards.
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => {
+              const Icon = SERVICE_ICONS[index % SERVICE_ICONS.length];
+
+              return (
+                <Reveal key={service.n} delay={index * 70} className="bg-primary-dark p-10">
+                  <Icon className="text-gold mb-8" size={28} strokeWidth={1.2} />
+                  <div className="rule-gold mb-6 h-px w-10" />
+                  <h3 className="font-display-light mb-3 text-2xl text-white">{service.title}</h3>
+                  <p className="text-sm font-light leading-[1.7] text-white/70">{service.copy}</p>
+                </Reveal>
+              );
+            })}
+
+            <Reveal delay={services.length * 70} className="flex flex-col justify-between bg-primary p-10">
+              <div>
+                <span className="text-gold text-[10px] uppercase tracking-editorial">E/06</span>
+                <h3 className="font-display-light mt-6 mb-3 text-3xl text-white">Browse the Catalog</h3>
+                <p className="text-sm font-light leading-[1.7] text-white/75">
+                  Explore our complete product reference with categories, sub-categories and technical
+                  specifications.
+                </p>
+              </div>
+              <Link to="/catalog" className="mt-8 inline-flex w-fit items-center gap-2 border-b border-secondary pb-2 text-[11px] uppercase tracking-editorial text-white">
+                Open Catalog <ArrowUpRight size={14} />
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries" className="section-space-lg bg-white">
         <div className="page-shell">
           <Reveal>
-            <SectionLabel n="03" label="Industries" />
+            <SectionLabel n="04" label="Industries" />
             <div className="mb-20 grid gap-12 lg:grid-cols-12">
               <div className="lg:col-span-5">
                 <DisplayHeading>Built for mission-critical sectors.</DisplayHeading>
@@ -147,49 +203,6 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-display-light mb-3 text-3xl">{industry.title}</h3>
                   <p className="text-sm font-light leading-relaxed text-foreground/65">{industry.copy}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="section-space-lg relative overflow-hidden text-white">
-        <img src={imgProcess} alt="Industrial processing facility" className="absolute inset-0 h-full w-full object-cover" width={1920} height={1080} />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/55 via-primary-dark/72 to-primary-dark/90" />
-        <div className="absolute inset-0 bg-primary-dark/35" />
-        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_8%_85%,rgba(209,184,122,0.18),transparent_62%)]" />
-
-        <div className="page-shell relative z-10">
-          <Reveal>
-            <div className="mb-16 grid gap-12 lg:mb-20 lg:grid-cols-12">
-              <div className="lg:col-span-6">
-                <div className="mb-8 flex items-center gap-4">
-                  <span className="text-gold text-[11px] uppercase tracking-editorial">03</span>
-                  <span className="rule-gold h-px w-8" />
-                  <span className="text-[11px] uppercase tracking-editorial text-white/65">Our Services</span>
-                </div>
-                <h2 className="font-display-light max-w-3xl text-5xl leading-[0.98] tracking-tight text-white md:text-6xl lg:text-7xl">
-                  A complete supply chain - engineered end to end.
-                </h2>
-              </div>
-              <div className="text-[15px] font-light leading-[1.8] text-white/65 lg:col-span-5 lg:col-start-8 lg:pt-8">
-                From initial specification to after-sales continuity, we operate as a single point of
-                accountability for our clients&apos; equipment supply needs.
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="grid border border-white/10 bg-white/5 md:grid-cols-2">
-            {services.map((service, index) => (
-              <Reveal key={service.n} delay={index * 80}>
-                <div className="h-full border border-white/10 bg-[hsl(210_100%_14%)]/88 p-10 backdrop-blur-[1px] lg:p-12">
-                  <div className="mb-8 flex items-center gap-4">
-                    <span className="text-gold text-[11px] uppercase tracking-editorial">{service.n.toLowerCase()}</span>
-                    <span className="rule-gold h-px w-8" />
-                  </div>
-                  <h3 className="font-display-light mb-5 text-4xl leading-tight text-white">{service.title}</h3>
-                  <p className="max-w-md text-[14px] font-light leading-[1.85] text-white/68">{service.copy}</p>
                 </div>
               </Reveal>
             ))}

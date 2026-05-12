@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import QuoteRequestPanel from "./components/QuoteRequestPanel";
 import HomePage from "./pages/home";
+import CompanyPage from "./pages/company";
 import CatalogPage from "./pages/catalog/catalog";
 import CatalogCategoryPage from "./pages/catalog/category";
 import PartnersPage from "./pages/partners";
@@ -19,6 +20,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/company" element={<CompanyPage />} />
           <Route path="/catalog" element={<CatalogPage onRequestQuote={() => setQuotePanelOpen(true)} />} />
           <Route path="/catalog/:slug" element={<CatalogCategoryPage onRequestQuote={() => setQuotePanelOpen(true)} />} />
           <Route path="/partners" element={<PartnersPage />} />

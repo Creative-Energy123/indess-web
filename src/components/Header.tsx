@@ -10,7 +10,7 @@ type Section = {
 };
 
 const SECTIONS: Section[] = [
-	{ id: "company", label: "Company" },
+	{ id: "company", label: "Company", route: "/company" },
 	{ id: "services", label: "Expertise" },
 	{ id: "catalog", label: "Catalog", route: "/catalog" },
 	{ id: "partners", label: "Partners", route: "/partners" },
