@@ -11,6 +11,12 @@ export type ServiceItem = {
   copy: string;
 };
 
+export type ExpertiseItem = {
+  n: string;
+  title: string;
+  copy: string;
+};
+
 export type ProductItem = {
   n: string;
   title: string;
@@ -22,9 +28,20 @@ export type ProductItem = {
 export type PartnerItem = {
   name: string;
   role: string;
+  logo?: string;
 };
 
 export type ClientItem = {
   name: string;
   logo?: string;
+};
+
+export type BrandItem = {
+  name: string;
+  logo?: string;
+};
+
+export type PresenceRegionItem = {
+  region: string;
+  countries: string[];
 };

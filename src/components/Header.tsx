@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/indess-logo.png";
 
 type Section = {
@@ -10,11 +10,11 @@ type Section = {
 };
 
 const SECTIONS: Section[] = [
-	{ id: "company", label: "Company", route: "/company" },
+	{ id: "company", label: "Company" },
 	{ id: "services", label: "Expertise" },
 	{ id: "catalog", label: "Catalog", route: "/catalog" },
-	{ id: "partners", label: "Partners", route: "/partners" },
-	{ id: "clients", label: "Clients", route: "/clients" },
+	{ id: "partners", label: "Partners" },
+	{ id: "clients", label: "Clients" },
 ];
 
 const cn = (...classes: Array<string | false | undefined>) => classes.filter(Boolean).join(" ");
@@ -34,12 +34,12 @@ export default function Header() {
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
-	const go = (id: string, route?: string) => {
+	const goToSection = (id: string) => {
 		setOpen(false);
+		const target = document.getElementById(id);
 
-		if (route) {
-			navigate(route);
-			window.scrollTo({ top: 0, behavior: "smooth" });
+		if (target) {
+			target.scrollIntoView({ behavior: "smooth", block: "start" });
 			return;
 		}
 
@@ -62,33 +62,50 @@ export default function Header() {
 			)}
 		>
 			<div className="page-shell header-shell">
-				<button
+				<Link
+					to="/"
 					onClick={() => {
 						setOpen(false);
-						navigate("/");
 						window.scrollTo({ top: 0, behavior: "smooth" });
 					}}
 					className={cn("flex items-center gap-3", useSolidHeader ? "" : "bg-white/95 px-3 py-1.5 rounded")}
 				>
 					<img src={logo} alt="INDESS" className="h-8 w-auto" width={160} height={32} />
-				</button>
+				</Link>
 
 				<nav className="hidden items-center gap-8 lg:flex">
 					{SECTIONS.map((section) => (
-						<button
-							key={section.id}
-							onClick={() => go(section.id, section.route)}
-							className={cn(
-								"nav-link",
-								useSolidHeader ? "text-neutral-700 hover:text-primary" : "text-white/85 hover:text-white"
-							)}
-						>
-							{section.label}
-						</button>
+						section.route ? (
+							<Link
+								key={section.id}
+								to={section.route}
+								onClick={() => {
+									setOpen(false);
+									window.scrollTo({ top: 0, behavior: "smooth" });
+								}}
+								className={cn(
+									"nav-link",
+									useSolidHeader ? "text-neutral-700 hover:text-primary" : "text-white/85 hover:text-white"
+								)}
+							>
+								{section.label}
+							</Link>
+						) : (
+							<button
+								key={section.id}
+								onClick={() => goToSection(section.id)}
+								className={cn(
+									"nav-link",
+									useSolidHeader ? "text-neutral-700 hover:text-primary" : "text-white/85 hover:text-white"
+								)}
+							>
+								{section.label}
+							</button>
+						)
 					))}
 				</nav>
 
-				<button onClick={() => go("contact")} className="btn btn-primary btn-nav-cta hidden lg:inline-flex">
+				<button onClick={() => goToSection("contact")} className="btn btn-primary btn-nav-cta hidden lg:inline-flex">
 					Contact
 				</button>
 
@@ -105,16 +122,30 @@ export default function Header() {
 				<div className="border-t border-neutral-200 bg-white lg:hidden">
 					<nav className="page-shell flex flex-col py-4">
 						{SECTIONS.map((section) => (
-							<button
-								key={section.id}
-								onClick={() => go(section.id, section.route)}
-								className="nav-link border-b border-neutral-200 px-2 py-3 text-left text-neutral-700 hover:text-primary"
-							>
-								{section.label}
-							</button>
+							section.route ? (
+								<Link
+									key={section.id}
+									to={section.route}
+									onClick={() => {
+										setOpen(false);
+										window.scrollTo({ top: 0, behavior: "smooth" });
+									}}
+									className="nav-link border-b border-neutral-200 px-2 py-3 text-left text-neutral-700 hover:text-primary"
+								>
+									{section.label}
+								</Link>
+							) : (
+								<button
+									key={section.id}
+									onClick={() => goToSection(section.id)}
+									className="nav-link border-b border-neutral-200 px-2 py-3 text-left text-neutral-700 hover:text-primary"
+								>
+									{section.label}
+								</button>
+							)
 						))}
 						<button
-							onClick={() => go("contact")}
+							onClick={() => goToSection("contact")}
 							className="nav-link px-2 py-3 text-left text-primary"
 						>
 							Contact

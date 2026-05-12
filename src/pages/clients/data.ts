@@ -13,16 +13,75 @@ import imgClientGms from "../../assets/clients/GMS-300x180.jpeg";
 import type { ClientPageItem } from "./types";
 
 export const clientPageData: ClientPageItem[] = [
-  { name: "NMDC", logo: imgClientNmdc },
-  { name: "ADNOC" },
-  { name: "Borouge", logo: imgClientBorouge },
-  { name: "NPCC", logo: imgClientNpcc },
-  { name: "DEWA", logo: imgClientDewa },
-  { name: "EWEC", logo: imgClientEwec },
-  { name: "G42", logo: imgClientG42 },
-  { name: "DP World", logo: imgClientDpWorld },
-  { name: "Fertiglobe", logo: imgClientFertiglobe },
-  { name: "Abu Dhabi Ports", logo: imgClientAbuDhabiPorts },
-  { name: "Oman Drydock", logo: imgClientOman },
-  { name: "GMS", logo: imgClientGms },
+  {
+    name: "ADNOC",
+    sector: "Oil & Gas",
+    project: "Supply of valves, flanges and instrumentation packages for upstream operations.",
+  },
+  {
+    name: "NMDC",
+    logo: imgClientNmdc,
+    sector: "Marine & Dredging",
+    project: "Mechanical and electrical equipment for offshore marine construction projects.",
+  },
+  {
+    name: "Borouge",
+    logo: imgClientBorouge,
+    sector: "Petrochemical",
+    project: "Process equipment and treatment chemicals for polyolefin manufacturing facilities.",
+  },
+  {
+    name: "NPCC",
+    logo: imgClientNpcc,
+    sector: "EPC / Offshore",
+    project: "Pipes, fittings and structural steel for offshore platform fabrication.",
+  },
+  {
+    name: "DEWA",
+    logo: imgClientDewa,
+    sector: "Power & Water",
+    project: "Switchgear, transformers and control systems for utility infrastructure.",
+  },
+  {
+    name: "EWEC",
+    logo: imgClientEwec,
+    sector: "Power Generation",
+    project: "Electrical and instrumentation supply for power and water generation assets.",
+  },
+  {
+    name: "G42",
+    logo: imgClientG42,
+    sector: "Technology & AI",
+    project: "Specialised industrial equipment for data-centre and infrastructure projects.",
+  },
+  {
+    name: "DP World",
+    logo: imgClientDpWorld,
+    sector: "Ports & Logistics",
+    project: "Marine-grade hardware, lubricants and spares for port operations.",
+  },
+  {
+    name: "Fertiglobe",
+    logo: imgClientFertiglobe,
+    sector: "Fertilizers",
+    project: "Process valves, pumps and chemicals for ammonia and urea production.",
+  },
+  {
+    name: "Abu Dhabi Ports",
+    logo: imgClientAbuDhabiPorts,
+    sector: "Maritime",
+    project: "Mechanical and safety equipment for port infrastructure expansion.",
+  },
+  {
+    name: "Oman Drydock",
+    logo: imgClientOman,
+    sector: "Ship Repair",
+    project: "Marine spares, valves and treatment chemicals for VLCC servicing.",
+  },
+  {
+    name: "GMS",
+    logo: imgClientGms,
+    sector: "Offshore Services",
+    project: "Specialty pumps, switchgear and lifting equipment for self-elevating vessels.",
+  },
 ];

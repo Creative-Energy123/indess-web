@@ -1,75 +1,34 @@
-# React + TypeScript + Vite
+# INDEES Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Industrial supply website built with React, TypeScript, Vite and Tailwind v4.
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `npm run dev`: Start local development server.
+- `npm run build`: Compile and produce production build.
+- `npm run typecheck`: Run TypeScript project checks.
+- `npm run lint`: Run ESLint checks.
+- `npm run check`: Run lint and typecheck together.
+- `npm run preview`: Preview production build.
 
-## React Compiler
+## Architecture
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- `src/components`: Shared UI components and app-level building blocks.
+- `src/components/layout`: Layout primitives such as page scaffolds.
+- `src/pages`: Route-level feature modules.
+- `src/pages/<feature>/data.ts`: Content/data source for a feature.
+- `src/pages/<feature>/types.ts`: Feature-local model types.
+- `src/pages/<feature>/sections`: Section-level composable UI pieces.
 
-Note: This will impact Vite dev & build performances.
+## Import Conventions
 
-## Expanding the ESLint configuration
+- Use path alias imports for app code: `@/...`
+- Keep route files lightweight and compose from section components.
+- Keep content in `data.ts`, UI in `index.tsx`/`sections/*.tsx`, and types in `types.ts`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Quality Guardrails
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Prefer typed feature models instead of inline object literals in page files.
+- Keep sections independent and focused on one display concern.
+- Avoid dead files and stale components.
+- Use semantic links for route navigation, reserve buttons for actions.

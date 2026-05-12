@@ -14,10 +14,148 @@ import vRelief from "../../../assets/catalog/valves/pressure-relief.jpg";
 import vSafety from "../../../assets/catalog/valves/safety.jpg";
 import vSlide from "../../../assets/catalog/valves/slide.jpg";
 import vSolenoid from "../../../assets/catalog/valves/solenoid.jpg";
+import { CATALOG_CATEGORIES } from "../data";
 
 import type { CatalogDetailPage } from "./types";
 
-export const CATALOG_DETAIL_PAGES: Record<string, CatalogDetailPage> = {
+type CatalogImageEntry = {
+  path: string;
+  url: string;
+  tokens: string[];
+};
+
+const catalogItemImages = import.meta.glob("../../../assets/catalog/**/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+const FOLDER_BY_SLUG: Record<string, string> = {
+  pumps: "mechanical",
+  compressors: "mechanical",
+  pipes: "mechanical",
+  "heat-exchangers": "mechanical",
+  transmitters: "instrumentation",
+  "control-systems": "instrumentation",
+  "control-valves": "instrumentation",
+  "safety-detection": "instrumentation",
+  switchgear: "electrical",
+  transformers: "electrical",
+  motors: "electrical",
+  cables: "electrical",
+  "lighting-ups": "electrical",
+  lubricants: "chemicals",
+  "treatment-chemicals": "chemicals",
+  "drilling-fluids": "chemicals",
+  "cleaning-chemicals": "chemicals",
+};
+
+const STOP_WORDS = new Set([
+  "and",
+  "for",
+  "area",
+  "units",
+  "system",
+  "systems",
+  "equipment",
+  "chemicals",
+  "chemical",
+  "industrial",
+  "power",
+  "control",
+  "panels",
+  "packages",
+]);
+
+const toTokens = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((token) => (token.endsWith("s") && token.length > 4 ? token.slice(0, -1) : token))
+    .filter((token) => !STOP_WORDS.has(token));
+
+const imageEntries: CatalogImageEntry[] = Object.entries(catalogItemImages).map(([path, url]) => {
+  const fileName = path.split("/").pop() ?? "";
+
+  return {
+    path,
+    url,
+    tokens: toTokens(fileName),
+  };
+});
+
+const scoreImage = (entry: CatalogImageEntry, productTokens: string[]) => {
+  const overlap = productTokens.filter((token) => entry.tokens.includes(token)).length;
+
+  if (!overlap) {
+    return 0;
+  }
+
+  return overlap * 10 + entry.tokens.length;
+};
+
+const resolveCatalogItemImage = (
+  slug: string,
+  productName: string,
+  fallbackImage: string,
+  usedPaths: Set<string>,
+  index: number
+) => {
+  const preferredFolder = FOLDER_BY_SLUG[slug];
+  const preferredEntries = preferredFolder
+    ? imageEntries.filter((entry) => entry.path.includes(`/${preferredFolder}/`))
+    : imageEntries;
+
+  const productTokens = toTokens(productName);
+  const scored = preferredEntries
+    .map((entry) => ({ entry, score: scoreImage(entry, productTokens) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  const bestAvailable = scored.find(({ entry }) => !usedPaths.has(entry.path));
+  if (bestAvailable) {
+    usedPaths.add(bestAvailable.entry.path);
+    return bestAvailable.entry.url;
+  }
+
+  const fallbackPool = preferredEntries.filter((entry) => !usedPaths.has(entry.path));
+  if (fallbackPool.length > 0) {
+    const picked = fallbackPool[index % fallbackPool.length];
+    usedPaths.add(picked.path);
+    return picked.url;
+  }
+
+  return fallbackImage;
+};
+
+const generatedCatalogDetailPages: Record<string, CatalogDetailPage> = Object.fromEntries(
+  CATALOG_CATEGORIES.flatMap((category) =>
+    category.cards.map((card) => [
+      card.id,
+      (() => {
+        const usedPaths = new Set<string>();
+
+        return {
+        slug: card.id,
+        parent: category.label,
+        parentN: category.number,
+        title: card.title,
+        intro: `Explore our ${card.title.toLowerCase()} range for reliable industrial performance, engineered for demanding operations across energy, process and marine sectors.`,
+        hero: card.image,
+        items: card.products.map((product, index) => ({
+          name: product,
+          image: resolveCatalogItemImage(card.id, product, card.image, usedPaths, index),
+          description: `${product} solutions selected for durability, compliance and dependable field performance.`,
+        })),
+      } satisfies CatalogDetailPage;
+      })(),
+    ])
+  )
+);
+
+const catalogDetailOverrides: Record<string, CatalogDetailPage> = {
   valves: {
     slug: "valves",
     parent: "Mechanical Solutions",
@@ -112,4 +250,9 @@ export const CATALOG_DETAIL_PAGES: Record<string, CatalogDetailPage> = {
       },
     ],
   },
+};
+
+export const CATALOG_DETAIL_PAGES: Record<string, CatalogDetailPage> = {
+  ...generatedCatalogDetailPages,
+  ...catalogDetailOverrides,
 };

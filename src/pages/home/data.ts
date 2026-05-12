@@ -1,28 +1,38 @@
-import imgMechanical from "../../assets/cin-mechanical.jpg";
-import imgElectrical from "../../assets/cin-electrical.jpg";
-import imgInstrumentation from "../../assets/cin-instrumentation.jpg";
-import imgLogistics from "../../assets/cin-logistics.jpg";
-import imgChemicals from "../../assets/cin-chemicals.jpg";
-import imgProcess from "../../assets/cin-process.jpg";
-import imgManufacturing from "../../assets/cin-manufacturing.jpg";
-import imgOilgas from "../../assets/industry-oilgas.jpg";
-import imgPetro from "../../assets/industry-petrochemical.jpg";
-import imgPower from "../../assets/industry-power.jpg";
-import imgShip from "../../assets/industry-shipping.jpg";
-import imgAviation from "../../assets/industry-aviation.jpg";
-import imgClientNmdc from "../../assets/clients/NMDC.jpg";
-import imgClientBorouge from "../../assets/clients/Borouge.jpg";
-import imgClientNpcc from "../../assets/clients/NPCC.png";
-import imgClientDewa from "../../assets/clients/dewa.jpg";
-import imgClientEwec from "../../assets/clients/ewec-300x180.jpeg";
-import imgClientG42 from "../../assets/clients/G42.jpg";
-import imgClientDpWorld from "../../assets/clients/DP_World.jpg";
-import imgClientFertiglobe from "../../assets/clients/fertiglobe.jpg";
-import imgClientAbuDhabiPorts from "../../assets/clients/Abu_Dhabi_Ports.jpg";
-import imgClientOman from "../../assets/clients/OMAN-300x180.jpeg";
-import imgClientGms from "../../assets/clients/GMS-300x180.jpeg";
+import imgMechanical from "@/assets/cin-mechanical.jpg";
+import imgElectrical from "@/assets/cin-electrical.jpg";
+import imgInstrumentation from "@/assets/cin-instrumentation.jpg";
+import imgLogistics from "@/assets/cin-logistics.jpg";
+import imgChemicals from "@/assets/cin-chemicals.jpg";
+import imgProcess from "@/assets/cin-process.jpg";
+import imgManufacturing from "@/assets/cin-manufacturing.jpg";
+import imgOilgas from "@/assets/industry-oilgas.jpg";
+import imgPetro from "@/assets/industry-petrochemical.jpg";
+import imgPower from "@/assets/industry-power.jpg";
+import imgShip from "@/assets/industry-shipping.jpg";
+import imgAviation from "@/assets/industry-aviation.jpg";
+import imgClientNmdc from "@/assets/clients/NMDC.jpg";
+import imgClientBorouge from "@/assets/clients/Borouge.jpg";
+import imgClientNpcc from "@/assets/clients/NPCC.png";
+import imgClientDewa from "@/assets/clients/dewa.jpg";
+import imgClientEwec from "@/assets/clients/ewec-300x180.jpeg";
+import imgClientG42 from "@/assets/clients/G42.jpg";
+import imgClientDpWorld from "@/assets/clients/DP_World.jpg";
+import imgClientFertiglobe from "@/assets/clients/fertiglobe.jpg";
+import imgClientAbuDhabiPorts from "@/assets/clients/Abu_Dhabi_Ports.jpg";
+import imgClientOman from "@/assets/clients/OMAN-300x180.jpeg";
+import imgClientGms from "@/assets/clients/GMS-300x180.jpeg";
+import imgBrandAbb from "@/assets/clients/abb-asea.jpg";
+import imgBrandBanner from "@/assets/clients/banner_more_sensors.jpg";
+import imgBrandBosch from "@/assets/clients/bosch.jpg";
+import imgBrandEaton from "@/assets/clients/EATON.jpg";
+import imgBrandFanuc from "@/assets/clients/FANUC.png";
+import imgBrandHoneywell from "@/assets/clients/honey-well.jpg";
+import imgBrandLenze from "@/assets/clients/lenze.jpg";
+import imgBrandMitsubishi from "@/assets/clients/mitsubishi.jpg";
+import imgBrandOmron from "@/assets/clients/omron.jpg";
+import imgBrandSchneider from "@/assets/clients/Schneider_Electric.jpg";
 
-import type { ClientItem, IndustryItem, PartnerItem, ProductItem, ServiceItem } from "./types";
+import type { BrandItem, ClientItem, ExpertiseItem, IndustryItem, PartnerItem, PresenceRegionItem, ProductItem, ServiceItem } from "@/pages/home/types";
 
 export const industries: IndustryItem[] = [
   { n: "01", title: "Oil & Gas", img: imgOilgas, copy: "Upstream, midstream and downstream operations across the GCC." },
@@ -38,6 +48,14 @@ export const services: ServiceItem[] = [
   { n: "S/02", title: "Technical Advisory", copy: "Engineering-led specification, BOM optimization and lifecycle planning for mission-critical systems." },
   { n: "S/03", title: "Logistics & Delivery", copy: "End-to-end freight, customs and on-site delivery across the GCC, MENA and beyond." },
   { n: "S/04", title: "After-Sales Support", copy: "Spares continuity, warranty handling and field-service coordination over the asset lifecycle." },
+];
+
+export const expertiseItems: ExpertiseItem[] = [
+  { n: "E/01", title: "Mechanical", copy: "Pumps, valves, compressors, heat exchangers and rotating equipment engineered for high-pressure service." },
+  { n: "E/02", title: "Instrumentation", copy: "Field instruments, control systems and safety detection that deliver plant-wide visibility." },
+  { n: "E/03", title: "Electrical", copy: "LV/MV switchgear, transformers, motors and drives designed for continuous industrial duty." },
+  { n: "E/04", title: "Industrial Chemicals", copy: "Lubricants, drilling fluids and treatment chemicals supporting refineries and offshore operations." },
+  { n: "E/05", title: "Marine", copy: "Specialised supply for VLCs and VLCCs with pumps, valves and onboard systems for harsh environments." },
 ];
 
 export const products: ProductItem[] = [
@@ -58,6 +76,21 @@ export const partners: PartnerItem[] = [
   { name: "Cangzhou Hongding", role: "Pipes & Fittings - China" },
 ];
 
+export const brands: BrandItem[] = [
+  { name: "GE" },
+  { name: "Mitsubishi", logo: imgBrandMitsubishi },
+  { name: "Schneider", logo: imgBrandSchneider },
+  { name: "Honeywell", logo: imgBrandHoneywell },
+  { name: "Omron", logo: imgBrandOmron },
+  { name: "ABB", logo: imgBrandAbb },
+  { name: "Fanuc", logo: imgBrandFanuc },
+  { name: "Eaton", logo: imgBrandEaton },
+  { name: "Bosch", logo: imgBrandBosch },
+  { name: "Lenze", logo: imgBrandLenze },
+  { name: "Banner", logo: imgBrandBanner },
+  { name: "Siemens" },
+];
+
 export const clients: ClientItem[] = [
   { name: "NMDC", logo: imgClientNmdc },
   { name: "ADNOC" },
@@ -71,4 +104,11 @@ export const clients: ClientItem[] = [
   { name: "Abu Dhabi Ports", logo: imgClientAbuDhabiPorts },
   { name: "Oman Drydock", logo: imgClientOman },
   { name: "GMS", logo: imgClientGms },
+];
+
+export const regions: PresenceRegionItem[] = [
+  { region: "Middle East", countries: ["United Arab Emirates", "Oman", "Qatar", "Kuwait", "Bahrain", "Saudi Arabia"] },
+  { region: "Europe", countries: ["United Kingdom", "Estonia"] },
+  { region: "Americas", countries: ["United States"] },
+  { region: "Asia Pacific", countries: ["South Korea", "Japan"] },
 ];

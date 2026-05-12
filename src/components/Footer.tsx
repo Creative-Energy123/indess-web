@@ -26,10 +26,10 @@ export default function Footer() {
               <Link to="/catalog" className="block transition-colors hover:text-secondary">
                 Catalog
               </Link>
-              <Link to="/partners" className="block transition-colors hover:text-secondary">
+              <Link to="/#partners" className="block transition-colors hover:text-secondary">
                 Partners
               </Link>
-              <Link to="/clients" className="block transition-colors hover:text-secondary">
+              <Link to="/#clients" className="block transition-colors hover:text-secondary">
                 Clients
               </Link>
               <Link to="/#contact" className="block transition-colors hover:text-secondary">

@@ -277,17 +277,6 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="section-space-lg bg-background-subtle">
-        <div className="page-shell text-center">
-          <p className="text-gold mb-6 text-[11px] uppercase tracking-editorial">Get In Touch</p>
-          <h3 className="font-display-light mx-auto mb-8 max-w-3xl text-4xl md:text-5xl">
-            Bring INDESS into your next industrial project.
-          </h3>
-          <Link to="/#contact" className="btn btn-primary btn-nav-cta inline-flex items-center gap-3 px-8 py-4">
-            Request Consultation <ArrowUpRight size={14} />
-          </Link>
-        </div>
-      </section>
     </Layout>
   );
 }
