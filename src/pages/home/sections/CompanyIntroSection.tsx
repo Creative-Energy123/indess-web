@@ -33,7 +33,7 @@ export default function CompanyIntroSection() {
             ["50+", "Trusted brands"],
             ["13+", "Marquee clients"],
           ].map(([number, label], index) => (
-            <div key={label} className={`border-border-soft py-10 ${index > 0 ? "md:border-l" : ""} ${index % 2 === 1 ? "border-l md:border-l" : ""}`}>
+            <div key={label} className={`border-border-soft py-10 pl-8 ${index > 0 ? "md:border-l" : ""} ${index % 2 === 1 ? "border-l md:border-l" : ""}`}>
               <div className="text-primary font-display-light mb-2 text-5xl md:text-6xl">{number}</div>
               <div className="tracking-editorial text-[10px] uppercase text-foreground/55">{label}</div>
             </div>

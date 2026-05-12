@@ -6,11 +6,7 @@ import { CATALOG_CATEGORIES, CATALOG_FILTERS } from "./data";
 
 const matchesQuery = (query: string, value: string) => value.toLowerCase().includes(query.toLowerCase());
 
-type CatalogPageProps = {
-  onRequestQuote: () => void;
-};
-
-export default function CatalogPage({ onRequestQuote }: CatalogPageProps) {
+export default function CatalogPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [searchValue, setSearchValue] = useState("");
 
@@ -153,22 +149,6 @@ export default function CatalogPage({ onRequestQuote }: CatalogPageProps) {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-primary-dark text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-secondary">Project Procurement</p>
-          <h2 className="font-display mt-5 text-4xl leading-[0.95] md:text-5xl">
-            Need a tailored quotation for your project?
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base font-light text-white/75 md:text-lg">
-            Share your requirement list and our engineering supply team will prepare a category-aligned,
-            partner-backed quote.
-          </p>
-          <button onClick={onRequestQuote} className="btn btn-secondary mt-10 px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.18em]">
-            Request a Quote
-          </button>
         </div>
       </section>
     </div>

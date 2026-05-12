@@ -5,11 +5,7 @@ import Layout from "../../../components/layout/Layout";
 import Reveal from "../../../components/Reveal";
 import { CATALOG_DETAIL_PAGES } from "./data";
 
-type CatalogCategoryPageProps = {
-  onRequestQuote: () => void;
-};
-
-export default function CatalogCategoryPage({ onRequestQuote }: CatalogCategoryPageProps) {
+export default function CatalogCategoryPage() {
   const { slug = "" } = useParams();
   const data = CATALOG_DETAIL_PAGES[slug];
 
@@ -98,16 +94,6 @@ export default function CatalogCategoryPage({ onRequestQuote }: CatalogCategoryP
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-primary-dark py-20 text-white">
-        <div className="page-shell text-center">
-          <p className="text-gold mb-6 text-[11px] uppercase tracking-editorial">Need Specifications or Pricing?</p>
-          <h2 className="font-display-light mb-8 text-3xl md:text-5xl">Speak with our technical team.</h2>
-          <button onClick={onRequestQuote} className="inline-flex items-center gap-3 bg-secondary px-8 py-4 text-[11px] uppercase tracking-editorial text-foreground transition-colors hover:bg-white">
-            Request a Quote
-          </button>
         </div>
       </section>
     </Layout>
