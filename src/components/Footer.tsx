@@ -20,16 +20,16 @@ export default function Footer() {
           <div className="lg:col-span-2 lg:col-start-5">
             <p className="mb-6 text-[11px] uppercase tracking-editorial text-white/60">Navigate</p>
             <nav className="space-y-4 text-lg font-light text-white/85">
-              <Link to="/" className="block transition-colors hover:text-secondary">
+              <Link to="/company" className="block transition-colors hover:text-secondary">
                 Company
               </Link>
               <Link to="/catalog" className="block transition-colors hover:text-secondary">
                 Catalog
               </Link>
-              <Link to="/#partners" className="block transition-colors hover:text-secondary">
+              <Link to="/partners" className="block transition-colors hover:text-secondary">
                 Partners
               </Link>
-              <Link to="/#clients" className="block transition-colors hover:text-secondary">
+              <Link to="/clients" className="block transition-colors hover:text-secondary">
                 Clients
               </Link>
               <Link to="/#contact" className="block transition-colors hover:text-secondary">

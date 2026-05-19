@@ -10,11 +10,11 @@ type Section = {
 };
 
 const SECTIONS: Section[] = [
-	{ id: "company", label: "Company" },
+	{ id: "company", label: "Company", route: "/company" },
 	{ id: "services", label: "Expertise" },
 	{ id: "catalog", label: "Catalog", route: "/catalog" },
-	{ id: "partners", label: "Partners" },
-	{ id: "clients", label: "Clients" },
+	{ id: "partners", label: "Partners", route: "/partners" },
+	{ id: "clients", label: "Clients", route: "/clients" },
 ];
 
 const cn = (...classes: Array<string | false | undefined>) => classes.filter(Boolean).join(" ");
