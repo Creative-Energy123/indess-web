@@ -29,9 +29,9 @@ export default function CompanyIntroSection() {
         <div className="mt-24 grid grid-cols-2 border-t border-border-soft md:grid-cols-4">
           {[
             ["20+", "Years in industry"],
-            ["500+", "Products supplied"],
-            ["50+", "Trusted brands"],
-            ["13+", "Marquee clients"],
+            ["10,000+", "Products supplied"],
+            ["500+", "Trusted brands"],
+            ["50+", "Marquee clients"],
           ].map(([number, label], index) => (
             <div key={label} className={`border-border-soft py-10 pl-8 ${index > 0 ? "md:border-l" : ""} ${index % 2 === 1 ? "border-l md:border-l" : ""}`}>
               <div className="text-primary font-display-light mb-2 text-5xl md:text-6xl">{number}</div>

@@ -7,11 +7,11 @@ import type { CitySuggestion, QuoteRequestForm, QuoteRequestPanelProps } from ".
 const cn = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(" ");
 
 const inputClass =
-  "w-full bg-transparent border-b border-white/25 py-3 text-white font-light focus:outline-none focus:border-gold transition-colors";
+  "w-full bg-transparent border-b border-foreground/20 py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors";
 
 const Field = ({ label, children }: { label: string; children: ReactNode }) => (
   <label className="block">
-    <span className="mb-3 block text-[10px] uppercase tracking-editorial text-white/55">{label}</span>
+    <span className="mb-3 block text-[10px] uppercase tracking-editorial text-foreground/55">{label}</span>
     {children}
   </label>
 );
@@ -197,14 +197,14 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
 
       <aside
         className={cn(
-          "absolute right-0 top-0 h-full w-full overflow-y-auto bg-[hsl(210_100%_8%)] text-white transition-transform duration-500 md:w-1/2",
+          "absolute right-0 top-0 h-full w-full overflow-y-auto bg-white text-foreground transition-transform duration-500 md:w-1/2",
           open ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <div className="border-b border-white/15 px-6 py-8 md:px-10 md:py-10">
+        <div className="border-b border-border-soft px-6 py-8 md:px-10 md:py-10">
           <p className="text-gold text-[11px] uppercase tracking-editorial">Query Form</p>
-          <h2 className="font-display-light mt-4 text-3xl text-white md:text-4xl">Request a Quote</h2>
-          <p className="mt-4 max-w-xl text-[14px] leading-[1.8] text-white/70">
+          <h2 className="font-display-light mt-4 text-3xl text-foreground md:text-4xl">Request a Quote</h2>
+          <p className="mt-4 max-w-xl text-[14px] leading-[1.8] text-foreground/70">
             Share your technical and commercial requirements. We use these details to prepare a complete,
             accurate quotation tailored to your scope.
           </p>
@@ -241,20 +241,20 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
                   autoComplete="off"
                 />
                 {citySuggestions.length > 0 && (
-                  <div className="absolute left-0 right-0 top-full z-20 mt-2 border border-white/20 bg-[hsl(210_100%_10%)]">
+                  <div className="absolute left-0 right-0 top-full z-20 mt-2 border border-border-soft bg-white shadow-lg">
                     {citySuggestions.map((suggestion) => (
                       <button
                         key={suggestion.label}
                         type="button"
                         onClick={() => applyCitySuggestion(suggestion)}
-                        className="block w-full px-4 py-2 text-left text-sm text-white/80 hover:bg-white/10"
+                        className="block w-full px-4 py-2 text-left text-sm text-foreground/80 hover:bg-background-subtle"
                       >
                         {suggestion.label}
                       </button>
                     ))}
                   </div>
                 )}
-                {cityLoading && <p className="mt-2 text-[11px] text-white/45">Searching cities...</p>}
+                {cityLoading && <p className="mt-2 text-[11px] text-foreground/45">Searching cities...</p>}
               </div>
             </Field>
             <Field label="Country / Region *">
@@ -273,13 +273,13 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
                 autoComplete="off"
               />
               {activeCategorySuggestions.length > 0 && (
-                <div className="absolute left-0 right-0 top-full z-20 mt-2 border border-white/20 bg-[hsl(210_100%_10%)]">
+                <div className="absolute left-0 right-0 top-full z-20 mt-2 border border-border-soft bg-white shadow-lg">
                   {activeCategorySuggestions.map((option) => (
                     <button
                       key={option}
                       type="button"
                       onClick={() => applyCategorySuggestion(option)}
-                      className="block w-full px-4 py-2 text-left text-sm text-white/80 hover:bg-white/10"
+                      className="block w-full px-4 py-2 text-left text-sm text-foreground/80 hover:bg-background-subtle"
                     >
                       {option}
                     </button>
@@ -287,7 +287,7 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
                 </div>
               )}
             </div>
-            <p className="mt-2 text-[11px] text-white/45">Multiple categories supported. Separate with commas.</p>
+            <p className="mt-2 text-[11px] text-foreground/45">Multiple categories supported. Separate with commas.</p>
           </Field>
 
           <Field label="Technical Specifications / Notes *">
@@ -300,16 +300,16 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
             />
           </Field>
 
-          <div className="flex items-center justify-between gap-4 border-t border-white/15 pt-6">
+          <div className="flex items-center justify-between gap-4 border-t border-border-soft pt-6">
             <div>
-              <p className="text-[12px] text-white/55">Our team usually replies within one business day.</p>
-              {submitError && <p className="mt-2 text-[12px] text-red-300">{submitError}</p>}
-              {submitSuccess && <p className="mt-2 text-[12px] text-emerald-300">{submitSuccess}</p>}
+              <p className="text-[12px] text-foreground/55">Our team usually replies within one business day.</p>
+              {submitError && <p className="mt-2 text-[12px] text-red-600">{submitError}</p>}
+              {submitSuccess && <p className="mt-2 text-[12px] text-emerald-600">{submitSuccess}</p>}
             </div>
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center gap-3 bg-secondary px-8 py-3 text-[11px] font-medium uppercase tracking-editorial text-foreground transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
+              className="inline-flex items-center gap-3 bg-primary px-8 py-3 text-[11px] font-medium uppercase tracking-editorial text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
             >
               {submitting ? "Submitting..." : "Submit Query"}
             </button>

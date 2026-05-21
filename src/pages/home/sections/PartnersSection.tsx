@@ -49,7 +49,7 @@ export default function PartnersSection() {
       <div id="clients" className="mt-24 pt-16 border-t border-border-soft">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-8">
           <p className="text-[10px] tracking-editorial uppercase text-gold">Selected Clients</p>
-          <Link to="/#clients" className="inline-flex items-center gap-2 text-[11px] tracking-editorial uppercase text-foreground/70 hover:text-primary transition-colors">
+          <Link to="/clients" className="inline-flex items-center gap-2 text-[11px] tracking-editorial uppercase text-foreground/70 hover:text-primary transition-colors">
             View All Clients <ArrowUpRight size={13} />
           </Link>
         </div>
@@ -72,7 +72,7 @@ export default function PartnersSection() {
                       to="/#clients"
                       className="client-card-slide group justify-center"
                     >
-                      <img src={logo.src} alt={logo.label} className="max-h-12 w-auto object-contain opacity-85 transition-opacity group-hover:opacity-100" />
+                      <img src={logo.src} alt={logo.label} className="max-h-24 w-auto object-contain opacity-85 transition-opacity group-hover:opacity-100" />
                     </Link>
                   );
                 })}

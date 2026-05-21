@@ -31,7 +31,7 @@ const ABOUT_LINKS: Section[] = [
 const MAIN_LINKS: Section[] = [
 	{ label: "Catalog", route: "/catalog" },
 	{ label: "HSE Services", route: "/hse-services" },
-	{ label: "Projects", id: "products" },
+	{ label: "Projects", route: "/projects" },
 	{ label: "Contact", id: "contact" },
 ];
 

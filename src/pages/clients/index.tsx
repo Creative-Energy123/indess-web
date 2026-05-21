@@ -23,15 +23,14 @@ export default function ClientsPage() {
 
       <section className="section-space-lg bg-white">
         <div className="page-shell">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-6">
+          <div className="mb-8 flex flex-wrap items-end gap-6">
             <p className="text-[10px] uppercase tracking-editorial text-gold">Selected Clients</p>
-            <p className="text-[11px] uppercase tracking-editorial text-foreground/65">View All Clients</p>
           </div>
 
           <div className="grid grid-cols-1 gap-px border border-border-soft bg-border-soft sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
             {allClientLogos.map((logo) => (
               <div key={logo.label} className="group flex aspect-[16/10] items-center justify-center bg-white p-6 transition-colors hover:bg-background-subtle">
-                <img src={logo.src} alt={logo.label} className="max-h-16 w-auto object-contain opacity-80 transition-opacity group-hover:opacity-100" />
+                <img src={logo.src} alt={logo.label} className="max-h-24 w-auto object-contain opacity-80 transition-opacity group-hover:opacity-100" />
               </div>
             ))}
           </div>

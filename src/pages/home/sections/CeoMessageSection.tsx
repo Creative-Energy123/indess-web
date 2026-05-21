@@ -1,7 +1,7 @@
 import Reveal from "@/components/Reveal";
 import SectionLabel from "@/components/SectionLabel";
 import SectionScaffold from "@/components/layout/SectionScaffold";
-import imgCEO from "@/assets/cin-ceo.jpg";
+import imgCEO from "@/assets/ceo-img.jpeg";
 
 export default function CeoMessageSection() {
   return (

@@ -9,6 +9,7 @@ import CatalogCategoryPage from "@/pages/catalog/category";
 import HseServicesPage from "@/pages/hse-services";
 import PartnersPage from "@/pages/partners";
 import ClientsPage from "@/pages/clients";
+import ProjectsPage from "@/pages/projects";
 import NotFoundPage from "@/pages/not-found";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/catalog/:slug" element={<CatalogCategoryPage />} />
           <Route path="/partners" element={<PartnersPage />} />
           <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

@@ -6,7 +6,7 @@ import Layout from "../../components/layout/Layout";
 import Reveal from "../../components/Reveal";
 import SectionLabel from "../../components/SectionLabel";
 import hero from "../../assets/cin-hero.jpg";
-import imgCEO from "../../assets/cin-ceo.jpg";
+import imgCEO from "../../assets/ceo-img.jpeg";
 import imgManufacturing from "../../assets/cin-manufacturing.jpg";
 import { companyGoals, companyRegions, companyTestimonials, companyValues } from "./data";
 
