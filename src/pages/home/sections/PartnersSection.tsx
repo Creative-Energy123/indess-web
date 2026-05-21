@@ -6,6 +6,7 @@ import PartnerLogo from "@/components/PartnerLogo";
 import Reveal from "@/components/Reveal";
 import SectionLabel from "@/components/SectionLabel";
 import SectionScaffold from "@/components/layout/SectionScaffold";
+import { allClientLogos } from "@/pages/clients/data";
 import { clients, partners } from "@/pages/home/data";
 
 export default function PartnersSection() {
@@ -21,27 +22,28 @@ export default function PartnersSection() {
             A curated network of manufacturers across Asia and Europe chosen for engineering excellence,
             certification rigour and field reliability.
           </p>
-          <Link to="/#partners" className="inline-flex items-center gap-3 mt-8 text-[11px] tracking-editorial uppercase font-medium text-white bg-primary px-6 py-3 hover:bg-primary-dark transition-colors">
+          <Link to="/partners" className="inline-flex items-center gap-3 mt-8 text-[11px] tracking-editorial uppercase font-medium text-white bg-primary px-6 py-3 hover:bg-primary-dark transition-colors">
             View All Partners <ArrowUpRight size={14} />
           </Link>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border-soft border border-border-soft">
-        {partners.map((partner, index) => (
-          <Reveal key={partner.name} delay={index * 80}>
-            <Link to="/#partners" className="bg-white p-10 lg:p-12 group hover:bg-background-subtle transition-colors block h-full">
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-[11px] tracking-editorial uppercase text-gold">PT/{String(index + 1).padStart(2, "0")}</span>
-                <ArrowUpRight size={16} className="text-foreground/30 group-hover:text-primary transition-colors" />
-              </div>
-              <PartnerLogo name={partner.name} className="mb-6" />
-              <h3 className="font-display-light text-2xl md:text-[1.65rem] mb-4 leading-tight group-hover:text-primary transition-colors">{partner.name}</h3>
-              <div className="h-px w-12 rule-gold mb-4" />
-              <p className="text-sm text-foreground/65 font-light">{partner.role}</p>
-            </Link>
-          </Reveal>
-        ))}
+      <div className="overflow-hidden border border-border-soft bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {partners.map((partner, index) => (
+            <Reveal key={partner.name} delay={index * 80}>
+              <Link to="/partners" className="group block border-b border-border-soft p-8 transition-colors hover:bg-background-subtle md:p-9 lg:border-r lg:last:border-r-0">
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <span className="text-[11px] tracking-editorial uppercase text-gold">PT/{String(index + 1).padStart(2, "0")}</span>
+                  <ArrowUpRight size={16} className="text-foreground/35 transition-colors group-hover:text-primary" />
+                </div>
+                <PartnerLogo name={partner.name} logo={partner.logo} className="mb-7" />
+                <h3 className="font-display-light text-[1.55rem] leading-tight text-foreground transition-colors group-hover:text-primary">{partner.name}</h3>
+                <p className="mt-3 text-sm font-light text-foreground/65">{partner.role}</p>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
 
       <div id="clients" className="mt-24 pt-16 border-t border-border-soft">
@@ -52,26 +54,25 @@ export default function PartnersSection() {
           </Link>
         </div>
 
+        {(() => {
+          const sliderLogos = allClientLogos.length > 0 ? allClientLogos : clients.map((item) => ({ src: item.logo ?? "", label: item.name }));
+          const midpoint = Math.ceil(sliderLogos.length / 2);
+          const topRow = sliderLogos.slice(0, midpoint).filter((item) => Boolean(item.src));
+          const bottomRow = sliderLogos.slice(midpoint).filter((item) => Boolean(item.src));
+
+          return (
         <div className="space-y-4">
-          {[clients.slice(0, 5), clients.slice(5, 10)].map((row, rowIndex) => (
+          {[topRow, bottomRow].map((row, rowIndex) => (
             <div key={`client-row-${rowIndex}`} className="client-card-marquee">
               <div className={`client-card-marquee-track ${rowIndex === 1 ? "reverse" : ""}`}>
-                {[...row, ...row, ...row].map((client, index) => {
-                  const initials = client.name
-                    .split(" ")
-                    .map((part) => part[0])
-                    .join("")
-                    .slice(0, 2)
-                    .toUpperCase();
-
+                {[...row, ...row, ...row].map((logo, index) => {
                   return (
                     <Link
-                      key={`${client.name}-${rowIndex}-${index}`}
+                      key={`${logo.label}-${rowIndex}-${index}`}
                       to="/#clients"
-                      className="client-card-slide group"
+                      className="client-card-slide group justify-center"
                     >
-                      <span className="client-card-initial">{initials}</span>
-                      <span className="client-card-name">{client.name}</span>
+                      <img src={logo.src} alt={logo.label} className="max-h-12 w-auto object-contain opacity-85 transition-opacity group-hover:opacity-100" />
                     </Link>
                   );
                 })}
@@ -79,6 +80,8 @@ export default function PartnersSection() {
             </div>
           ))}
         </div>
+          );
+        })()}
       </div>
     </SectionScaffold>
   );

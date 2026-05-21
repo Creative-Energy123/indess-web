@@ -6,8 +6,6 @@ export type QuoteRequestForm = {
   city: string;
   country: string;
   productCategory: string;
-  budget: string;
-  estimatedDeliveryTime: string;
   message: string;
 };
 

@@ -1,5 +1,8 @@
 export type PartnerPageItem = {
-  name: string;
-  role: string;
   code: string;
+  name: string;
+  country: string;
+  logo: string;
+  summary: string;
+  highlights: string[];
 };

@@ -10,29 +10,29 @@ import imgPetro from "@/assets/industry-petrochemical.jpg";
 import imgPower from "@/assets/industry-power.jpg";
 import imgShip from "@/assets/industry-shipping.jpg";
 import imgAviation from "@/assets/industry-aviation.jpg";
-import imgClientNmdc from "@/assets/clients/NMDC.jpg";
-import imgClientBorouge from "@/assets/clients/Borouge.jpg";
-import imgClientNpcc from "@/assets/clients/NPCC.png";
-import imgClientDewa from "@/assets/clients/dewa.jpg";
-import imgClientEwec from "@/assets/clients/ewec-300x180.jpeg";
-import imgClientG42 from "@/assets/clients/G42.jpg";
-import imgClientDpWorld from "@/assets/clients/DP_World.jpg";
-import imgClientFertiglobe from "@/assets/clients/fertiglobe.jpg";
-import imgClientAbuDhabiPorts from "@/assets/clients/Abu_Dhabi_Ports.jpg";
-import imgClientOman from "@/assets/clients/OMAN-300x180.jpeg";
-import imgClientGms from "@/assets/clients/GMS-300x180.jpeg";
-import imgBrandAbb from "@/assets/clients/abb-asea.jpg";
-import imgBrandBanner from "@/assets/clients/banner_more_sensors.jpg";
-import imgBrandBosch from "@/assets/clients/bosch.jpg";
-import imgBrandEaton from "@/assets/clients/EATON.jpg";
-import imgBrandFanuc from "@/assets/clients/FANUC.png";
-import imgBrandHoneywell from "@/assets/clients/honey-well.jpg";
-import imgBrandLenze from "@/assets/clients/lenze.jpg";
-import imgBrandMitsubishi from "@/assets/clients/mitsubishi.jpg";
-import imgBrandOmron from "@/assets/clients/omron.jpg";
-import imgBrandSchneider from "@/assets/clients/Schneider_Electric.jpg";
+import imgPartnerDongeun from "@/assets/partners/logo_dongeun.png";
+import imgPartnerHimile from "@/assets/partners/logo_himile.png";
+import imgPartnerWooju from "@/assets/partners/logo_wooju.png";
+import imgPartnerHs from "@/assets/partners/logo_hs.png";
+import imgPartnerHorizon from "@/assets/partners/logo_horizon.png";
+import imgPartnerCangzhou from "@/assets/partners/logo_Cangzhou.png";
 
 import type { BrandItem, ClientItem, ExpertiseItem, IndustryItem, PartnerItem, PresenceRegionItem, ProductItem, ServiceItem } from "@/pages/home/types";
+
+const clientLogoModules = import.meta.glob("../../assets/clients/logo_*.png", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+const clientLogoBySlug = Object.fromEntries(
+  Object.entries(clientLogoModules).map(([path, src]) => {
+    const fileName = path.split("/").pop() ?? "";
+    const slug = fileName.replace(/^logo_/, "").replace(/\.[^.]+$/, "").toLowerCase();
+    return [slug, src];
+  }),
+) as Record<string, string>;
+
+const getClientLogo = (slug: string): string | undefined => clientLogoBySlug[slug.toLowerCase()];
 
 export const industries: IndustryItem[] = [
   { n: "01", title: "Oil & Gas", img: imgOilgas, copy: "Upstream, midstream and downstream operations across the GCC." },
@@ -68,42 +68,42 @@ export const products: ProductItem[] = [
 ];
 
 export const partners: PartnerItem[] = [
-  { name: "Dongeun Valve", role: "Industrial Valves - South Korea" },
-  { name: "Himile Mechanical", role: "Precision Engineering - China" },
-  { name: "Wooju Gaspack", role: "Gas Handling Systems - South Korea" },
-  { name: "HS Valve", role: "Valves & Pipeline - South Korea" },
-  { name: "Horizon Water", role: "Water Treatment - China" },
-  { name: "Cangzhou Hongding", role: "Pipes & Fittings - China" },
+  { name: "Dongeun Valve", role: "Industrial Valves - South Korea", logo: imgPartnerDongeun },
+  { name: "Himile Mechanical", role: "Precision Engineering - China", logo: imgPartnerHimile },
+  { name: "Wooju Gaspack", role: "Gas Handling Systems - South Korea", logo: imgPartnerWooju },
+  { name: "HS Valve", role: "Valves & Pipeline - South Korea", logo: imgPartnerHs },
+  { name: "Horizon Water", role: "Water Treatment - China", logo: imgPartnerHorizon },
+  { name: "Cangzhou Hongding", role: "Pipes & Fittings - China", logo: imgPartnerCangzhou },
 ];
 
 export const brands: BrandItem[] = [
   { name: "GE" },
-  { name: "Mitsubishi", logo: imgBrandMitsubishi },
-  { name: "Schneider", logo: imgBrandSchneider },
-  { name: "Honeywell", logo: imgBrandHoneywell },
-  { name: "Omron", logo: imgBrandOmron },
-  { name: "ABB", logo: imgBrandAbb },
-  { name: "Fanuc", logo: imgBrandFanuc },
-  { name: "Eaton", logo: imgBrandEaton },
-  { name: "Bosch", logo: imgBrandBosch },
-  { name: "Lenze", logo: imgBrandLenze },
-  { name: "Banner", logo: imgBrandBanner },
-  { name: "Siemens" },
+  { name: "Mitsubishi", logo: getClientLogo("mitsubishi") },
+  { name: "Schneider" },
+  { name: "Honeywell" },
+  { name: "Omron" },
+  { name: "ABB", logo: getClientLogo("abb") },
+  { name: "Fanuc" },
+  { name: "Eaton" },
+  { name: "Bosch", logo: getClientLogo("bosch") },
+  { name: "Lenze" },
+  { name: "Banner" },
+  { name: "Siemens", logo: getClientLogo("siemensenergy") },
 ];
 
 export const clients: ClientItem[] = [
-  { name: "NMDC", logo: imgClientNmdc },
-  { name: "ADNOC" },
-  { name: "Borouge", logo: imgClientBorouge },
-  { name: "NPCC", logo: imgClientNpcc },
-  { name: "DEWA", logo: imgClientDewa },
-  { name: "EWEC", logo: imgClientEwec },
-  { name: "G42", logo: imgClientG42 },
-  { name: "DP World", logo: imgClientDpWorld },
-  { name: "Fertiglobe", logo: imgClientFertiglobe },
-  { name: "Abu Dhabi Ports", logo: imgClientAbuDhabiPorts },
-  { name: "Oman Drydock", logo: imgClientOman },
-  { name: "GMS", logo: imgClientGms },
+  { name: "NMDC" },
+  { name: "ADNOC", logo: getClientLogo("adnoc") },
+  { name: "Borouge", logo: getClientLogo("lyb") },
+  { name: "NPCC", logo: getClientLogo("npcc") },
+  { name: "DEWA", logo: getClientLogo("dewa") },
+  { name: "EWEC" },
+  { name: "G42" },
+  { name: "DP World", logo: getClientLogo("dpworld") },
+  { name: "Fertiglobe", logo: getClientLogo("fertiglobe") },
+  { name: "Abu Dhabi Ports", logo: getClientLogo("abudhabiports") },
+  { name: "Oman Drydock" },
+  { name: "GMS" },
 ];
 
 export const regions: PresenceRegionItem[] = [

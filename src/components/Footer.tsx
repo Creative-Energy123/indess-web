@@ -72,15 +72,6 @@ export default function Footer() {
                 <span className="h-1.5 w-1.5 bg-secondary" />
                 <span>LinkedIn</span>
               </a>
-              <a
-                href="https://www.facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 transition-colors hover:text-white"
-              >
-                <span className="h-1.5 w-1.5 bg-secondary" />
-                <span>Facebook</span>
-              </a>
             </div>
           </div>
         </div>

@@ -171,7 +171,7 @@
 		display: flex;
 		gap: 1rem;
 		width: max-content;
-		animation: client-card-marquee 24s linear infinite;
+		animation: client-card-marquee 40s linear infinite;
 	}
 
 	.client-card-marquee-track.reverse {

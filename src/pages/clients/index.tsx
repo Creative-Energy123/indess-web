@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { clientPageData } from "./data";
+import { allClientLogos } from "./data";
 
 export default function ClientsPage() {
   return (
@@ -28,14 +28,10 @@ export default function ClientsPage() {
             <p className="text-[11px] uppercase tracking-editorial text-foreground/65">View All Clients</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-px border border-border-soft bg-border-soft md:grid-cols-2 lg:grid-cols-4">
-            {clientPageData.map((client) => (
-              <div key={client.name} className="group flex aspect-[16/10] items-center justify-center bg-white p-6 transition-colors hover:bg-background-subtle">
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} className="max-h-16 w-auto object-contain opacity-80 transition-opacity group-hover:opacity-100" />
-                ) : (
-                  <span className="font-display-light text-3xl text-foreground/65 transition-colors group-hover:text-primary md:text-4xl">{client.name}</span>
-                )}
+          <div className="grid grid-cols-1 gap-px border border-border-soft bg-border-soft sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+            {allClientLogos.map((logo) => (
+              <div key={logo.label} className="group flex aspect-[16/10] items-center justify-center bg-white p-6 transition-colors hover:bg-background-subtle">
+                <img src={logo.src} alt={logo.label} className="max-h-16 w-auto object-contain opacity-80 transition-opacity group-hover:opacity-100" />
               </div>
             ))}
           </div>

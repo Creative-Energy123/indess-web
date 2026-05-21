@@ -5,11 +5,47 @@ Industrial supply website built with React, TypeScript, Vite and Tailwind v4.
 ## Scripts
 
 - `npm run dev`: Start local development server.
+- `npm run backend:dev`: Start quote backend in watch mode.
+- `npm run backend:start`: Start quote backend.
 - `npm run build`: Compile and produce production build.
 - `npm run typecheck`: Run TypeScript project checks.
 - `npm run lint`: Run ESLint checks.
 - `npm run check`: Run lint and typecheck together.
 - `npm run preview`: Preview production build.
+
+## Quote Backend
+
+Node-based backend lives under `backend/` and sends quote emails via SMTP.
+
+### Setup
+
+1. Install backend dependencies:
+	- `npm --prefix backend install`
+2. Copy env template and configure SMTP + recipient:
+	- `copy backend/.env.example backend/.env` (Windows)
+3. Start backend:
+	- `npm run backend:dev`
+4. Start frontend:
+	- `npm run dev`
+
+### Frontend API URL
+
+Set this in `.env` at project root if backend is not on localhost:8787:
+
+- `VITE_QUOTE_API_URL=http://localhost:8787`
+
+### Backend Environment Variables
+
+- `PORT`: Backend port (default `8787`)
+- `FRONTEND_ORIGIN`: Allowed CORS origin for frontend
+- `SMTP_HOST`: SMTP server host
+- `SMTP_PORT`: SMTP port
+- `SMTP_SECURE`: `true`/`false`
+- `SMTP_USER`: SMTP username
+- `SMTP_PASS`: SMTP password
+- `QUOTE_FROM_EMAIL`: Sender email address
+- `QUOTE_TO_EMAIL`: Default destination email for quote requests
+- `QUOTE_ALLOWED_RECIPIENTS`: Optional comma-separated allowlist for `recipientEmail` override
 
 ## Architecture
 

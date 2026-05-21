@@ -8,8 +8,6 @@ export const INITIAL_QUOTE_FORM: QuoteRequestForm = {
   city: "",
   country: "",
   productCategory: "",
-  budget: "",
-  estimatedDeliveryTime: "",
   message: "",
 };
 

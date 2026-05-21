@@ -6,6 +6,7 @@ import HomePage from "@/pages/home";
 import CompanyPage from "@/pages/company";
 import CatalogPage from "@/pages/catalog/catalog";
 import CatalogCategoryPage from "@/pages/catalog/category";
+import HseServicesPage from "@/pages/hse-services";
 import PartnersPage from "@/pages/partners";
 import ClientsPage from "@/pages/clients";
 import NotFoundPage from "@/pages/not-found";
@@ -23,6 +24,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/company" element={<CompanyPage />} />
+          <Route path="/hse-services" element={<HseServicesPage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog/:slug" element={<CatalogCategoryPage />} />
           <Route path="/partners" element={<PartnersPage />} />

@@ -4,10 +4,9 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import hero from "@/assets/cin-hero.jpg";
+import imgMechanical from "@/assets/cin-mechanical.jpg";
 import imgOilgas from "@/assets/industry-oilgas.jpg";
-import imgPower from "@/assets/industry-power.jpg";
-import imgShip from "@/assets/industry-shipping.jpg";
-import imgPetro from "@/assets/industry-petrochemical.jpg";
+import imgHse from "@/assets/hse-hero.jpg";
 
 type Slide = {
   eyebrow: string;
@@ -31,13 +30,27 @@ const SLIDES: Slide[] = [
         <span className="text-gold italic font-light">industry.</span>
       </>
     ),
-    copy: "INDESS is a precision supplier of mission-critical equipment to the oil and gas, petrochemical, power and marine sectors - sourced globally, delivered locally.",
+    copy: "INDESS is a precision supplier of mission-critical equipment to the oil & gas, petrochemical, power and marine sectors - sourced globally, delivered locally.",
     image: hero,
     cta: { label: "Discover INDESS", to: "/company" },
   },
   {
-    eyebrow: "Mission-Critical Sectors",
+    eyebrow: "Products & Catalog",
     volume: "Chapter II",
+    title: (
+      <>
+        A complete portfolio,
+        <br />
+        <span className="text-gold italic font-light">engineered to spec.</span>
+      </>
+    ),
+    copy: "Mechanical · Instrumentation · Electrical · Industrial Chemicals · Marine - thousands of products from tier-one OEMs, sourced globally and delivered under one roof.",
+    image: imgMechanical,
+    cta: { label: "Browse Catalog", to: "/catalog" },
+  },
+  {
+    eyebrow: "Industries We Serve",
+    volume: "Chapter III",
     title: (
       <>
         Where uptime
@@ -47,59 +60,27 @@ const SLIDES: Slide[] = [
         <span className="text-gold italic font-light">a feature.</span>
       </>
     ),
-    copy: "From upstream rigs to downstream refineries, our equipment keeps the world's most demanding operations running safely, reliably and continuously.",
+    copy: "Oil & Gas · Petrochemical · Power & Utilities · Marine · Aviation - supporting upstream rigs, downstream refineries and critical infrastructure operators across the region.",
     image: imgOilgas,
     cta: { label: "Explore Industries", to: "/#industries" },
   },
   {
-    eyebrow: "Engineered Trust",
-    volume: "Chapter III",
-    title: (
-      <>
-        Tier-one OEMs.
-        <br />
-        <span className="text-gold italic font-light">Zero compromise.</span>
-      </>
-    ),
-    copy: "Direct partnerships with leading manufacturers under transparent terms and engineering-led specification.",
-    image: imgPetro,
-    cta: { label: "Meet Our Partners", to: "/partners" },
-  },
-  {
-    eyebrow: "Marine & Offshore",
+    eyebrow: "HSE Services & Trainings",
     volume: "Chapter IV",
     title: (
       <>
-        Built for
+        Safety, certified.
         <br />
-        the open
-        <br />
-        <span className="text-gold italic font-light">ocean.</span>
+        <span className="text-gold italic font-light">People, protected.</span>
       </>
     ),
-    copy: "Marine-grade systems for shipyards, VLCCs and offshore platforms supplied with the spares continuity that keeps every vessel mission-ready.",
-    image: imgShip,
-    cta: { label: "Browse Catalog", to: "/catalog" },
-  },
-  {
-    eyebrow: "Worldwide Presence",
-    volume: "Chapter V",
-    title: (
-      <>
-        From the Gulf
-        <br />
-        to every
-        <br />
-        <span className="text-gold italic font-light">horizon.</span>
-      </>
-    ),
-    copy: "Headquartered in Abu Dhabi and operating across multiple countries to support sourcing, logistics and after-sales continuity.",
-    image: imgPower,
-    cta: { label: "View Clients", to: "/clients" },
+    copy: "In partnership with Oasis - HSE trainings, safety consultancy, audits, certifications and human resource solutions for industrial operators across the region.",
+    image: imgHse,
+    cta: { label: "Explore HSE Services", to: "/hse-services" },
   },
 ];
 
-const AUTO_MS = 2800;
+const AUTO_MS = 1800;
 
 export default function HeroCarousel() {
   const [active, setActive] = useState(0);

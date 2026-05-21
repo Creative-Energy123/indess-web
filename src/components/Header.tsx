@@ -1,23 +1,39 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuItem,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 import logo from "../assets/indess-logo.png";
 
+const navTriggerBaseClass =
+	"group inline-flex h-10 w-max items-center justify-center rounded-md px-3 py-2 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors focus:outline-none";
+
 type Section = {
-	id: string;
 	label: string;
 	route?: string;
+	id?: string;
 };
 
-const SECTIONS: Section[] = [
-	{ id: "company", label: "Company", route: "/company" },
-	{ id: "services", label: "Expertise" },
-	{ id: "catalog", label: "Catalog", route: "/catalog" },
-	{ id: "partners", label: "Partners", route: "/partners" },
-	{ id: "clients", label: "Clients", route: "/clients" },
+const ABOUT_LINKS: Section[] = [
+	{ label: "Company", route: "/company" },
+	{ label: "Partners", route: "/partners" },
+	{ label: "Clients", route: "/clients" },
+	{ label: "Career", route: "/career" },
 ];
 
-const cn = (...classes: Array<string | false | undefined>) => classes.filter(Boolean).join(" ");
+const MAIN_LINKS: Section[] = [
+	{ label: "Catalog", route: "/catalog" },
+	{ label: "HSE Services", route: "/hse-services" },
+	{ label: "Projects", id: "products" },
+	{ label: "Contact", id: "contact" },
+];
 
 export default function Header() {
 	const [scrolled, setScrolled] = useState(false);
@@ -73,40 +89,87 @@ export default function Header() {
 					<img src={logo} alt="INDESS" className="h-8 w-auto" width={160} height={32} />
 				</Link>
 
-				<nav className="hidden items-center gap-8 lg:flex">
-					{SECTIONS.map((section) => (
-						section.route ? (
-							<Link
-								key={section.id}
-								to={section.route}
-								onClick={() => {
-									setOpen(false);
-									window.scrollTo({ top: 0, behavior: "smooth" });
-								}}
+				<NavigationMenu className="hidden lg:flex">
+					<NavigationMenuList className="gap-1">
+						<NavigationMenuItem>
+							<NavigationMenuTrigger
 								className={cn(
-									"nav-link",
-									useSolidHeader ? "text-neutral-700 hover:text-primary" : "text-white/85 hover:text-white"
+									navTriggerBaseClass,
+									useSolidHeader
+										? "text-neutral-700 hover:text-primary"
+										: "bg-transparent text-white/85 hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10"
 								)}
 							>
-								{section.label}
-							</Link>
-						) : (
-							<button
-								key={section.id}
-								onClick={() => goToSection(section.id)}
-								className={cn(
-									"nav-link",
-									useSolidHeader ? "text-neutral-700 hover:text-primary" : "text-white/85 hover:text-white"
-								)}
-							>
-								{section.label}
-							</button>
-						)
-					))}
-				</nav>
+								About
+							</NavigationMenuTrigger>
+							<NavigationMenuContent>
+								<ul className="grid w-[220px] gap-1">
+									{ABOUT_LINKS.map((link) => (
+										<li key={link.label}>
+											<Link
+												to={link.route ?? "/"}
+												onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+												className="block rounded-md px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-foreground/75 transition-colors hover:bg-background-subtle hover:text-primary"
+											>
+												{link.label}
+											</Link>
+										</li>
+									))}
+								</ul>
+							</NavigationMenuContent>
+						</NavigationMenuItem>
 
-				<button onClick={() => goToSection("contact")} className="btn btn-primary btn-nav-cta hidden lg:inline-flex">
-					Contact
+						{MAIN_LINKS.map((section) => {
+							if (section.route) {
+								return (
+									<NavigationMenuItem key={section.id}>
+										<Link
+											to={section.route}
+											onClick={() => {
+												setOpen(false);
+												window.scrollTo({ top: 0, behavior: "smooth" });
+											}}
+											className={cn(
+												navTriggerBaseClass,
+												useSolidHeader
+													? "text-neutral-700 hover:bg-background-subtle hover:text-primary"
+													: "bg-transparent text-white/85 hover:bg-white/10 hover:text-white"
+											)}
+										>
+											{section.label}
+										</Link>
+									</NavigationMenuItem>
+								);
+							}
+
+							if (section.id) {
+								return (
+									<NavigationMenuItem key={section.label}>
+										<button
+											onClick={() => goToSection(section.id ?? "")}
+											className={cn(
+												navTriggerBaseClass,
+												useSolidHeader
+													? "text-neutral-700 hover:bg-background-subtle hover:text-primary"
+													: "bg-transparent text-white/85 hover:bg-white/10 hover:text-white"
+											)}
+										>
+											{section.label}
+										</button>
+									</NavigationMenuItem>
+								);
+							}
+
+							return null;
+						})}
+					</NavigationMenuList>
+				</NavigationMenu>
+
+				<button
+					onClick={() => goToSection("contact")}
+					className="btn btn-secondary btn-nav-cta hidden lg:inline-flex px-6 py-3 text-black"
+				>
+					GET A QUOTE
 				</button>
 
 				<button
@@ -121,10 +184,25 @@ export default function Header() {
 			{open && (
 				<div className="border-t border-neutral-200 bg-white lg:hidden">
 					<nav className="page-shell flex flex-col py-4">
-						{SECTIONS.map((section) => (
+						<p className="nav-link border-b border-neutral-200 px-2 py-3 text-left text-neutral-700">About</p>
+						{ABOUT_LINKS.map((link) => (
+							<Link
+								key={link.label}
+								to={link.route ?? "/"}
+								onClick={() => {
+									setOpen(false);
+									window.scrollTo({ top: 0, behavior: "smooth" });
+								}}
+								className="nav-link border-b border-neutral-200 px-6 py-3 text-left text-neutral-700 hover:text-primary"
+							>
+								{link.label}
+							</Link>
+						))}
+
+						{MAIN_LINKS.map((section) => (
 							section.route ? (
 								<Link
-									key={section.id}
+									key={section.label}
 									to={section.route}
 									onClick={() => {
 										setOpen(false);
@@ -136,8 +214,8 @@ export default function Header() {
 								</Link>
 							) : (
 								<button
-									key={section.id}
-									onClick={() => goToSection(section.id)}
+									key={section.label}
+									onClick={() => goToSection(section.id ?? "")}
 									className="nav-link border-b border-neutral-200 px-2 py-3 text-left text-neutral-700 hover:text-primary"
 								>
 									{section.label}
@@ -146,9 +224,9 @@ export default function Header() {
 						))}
 						<button
 							onClick={() => goToSection("contact")}
-							className="nav-link px-2 py-3 text-left text-primary"
+							className="btn btn-secondary btn-nav-cta mt-4 inline-flex w-full justify-center py-3 text-black"
 						>
-							Contact
+							GET A QUOTE
 						</button>
 					</nav>
 				</div>

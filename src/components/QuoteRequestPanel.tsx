@@ -21,6 +21,11 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
   const [citySuggestions, setCitySuggestions] = useState<CitySuggestion[]>([]);
   const [cityLoading, setCityLoading] = useState(false);
   const [activeCategorySuggestions, setActiveCategorySuggestions] = useState<string[]>([]);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
+
+  const quoteApiUrl = import.meta.env.VITE_QUOTE_API_URL ?? "http://localhost:8787";
 
   const updateField = (key: keyof QuoteRequestForm, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -141,10 +146,38 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
     setCitySuggestions([]);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setForm(INITIAL_QUOTE_FORM);
-    onOpenChange(false);
+
+    try {
+      setSubmitting(true);
+      setSubmitError(null);
+      setSubmitSuccess(null);
+
+      const response = await fetch(`${quoteApiUrl}/api/quote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        const errorPayload = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(errorPayload?.error || "Failed to submit quote request");
+      }
+
+      setSubmitSuccess("Quote request submitted successfully.");
+      setForm(INITIAL_QUOTE_FORM);
+      window.setTimeout(() => {
+        onOpenChange(false);
+        setSubmitSuccess(null);
+      }, 1200);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Failed to submit quote request");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -257,20 +290,6 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
             <p className="mt-2 text-[11px] text-white/45">Multiple categories supported. Separate with commas.</p>
           </Field>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <Field label="Budget Range">
-              <input value={form.budget} onChange={(event) => updateField("budget", event.target.value)} className={inputClass} />
-            </Field>
-            <Field label="Estimated Delivery Time">
-              <input
-                value={form.estimatedDeliveryTime}
-                onChange={(event) => updateField("estimatedDeliveryTime", event.target.value)}
-                className={inputClass}
-                placeholder="e.g. 2-4 weeks / ASAP"
-              />
-            </Field>
-          </div>
-
           <Field label="Technical Specifications / Notes *">
             <textarea
               required
@@ -282,12 +301,17 @@ export default function QuoteRequestPanel({ open, onOpenChange }: QuoteRequestPa
           </Field>
 
           <div className="flex items-center justify-between gap-4 border-t border-white/15 pt-6">
-            <p className="text-[12px] text-white/55">Our team usually replies within one business day.</p>
+            <div>
+              <p className="text-[12px] text-white/55">Our team usually replies within one business day.</p>
+              {submitError && <p className="mt-2 text-[12px] text-red-300">{submitError}</p>}
+              {submitSuccess && <p className="mt-2 text-[12px] text-emerald-300">{submitSuccess}</p>}
+            </div>
             <button
               type="submit"
-              className="inline-flex items-center gap-3 bg-secondary px-8 py-3 text-[11px] font-medium uppercase tracking-editorial text-foreground transition-colors hover:bg-white"
+              disabled={submitting}
+              className="inline-flex items-center gap-3 bg-secondary px-8 py-3 text-[11px] font-medium uppercase tracking-editorial text-foreground transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
             >
-              Submit Query
+              {submitting ? "Submitting..." : "Submit Query"}
             </button>
           </div>
         </form>

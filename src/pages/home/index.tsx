@@ -5,7 +5,6 @@ import CeoMessageSection from "@/pages/home/sections/CeoMessageSection";
 import CompanyIntroSection from "@/pages/home/sections/CompanyIntroSection";
 import ExpertiseSection from "@/pages/home/sections/ExpertiseSection";
 import IndustriesSection from "@/pages/home/sections/IndustriesSection";
-import OasisSection from "@/pages/home/sections/OasisSection";
 import PartnersSection from "@/pages/home/sections/PartnersSection";
 import PresenceSection from "@/pages/home/sections/PresenceSection";
 import ProductsSection from "@/pages/home/sections/ProductsSection";
@@ -19,7 +18,6 @@ export default function HomePage() {
       <CompanyIntroSection />
       <CeoMessageSection />
       <ExpertiseSection />
-      <OasisSection />
       <ProductsSection />
       <IndustriesSection />
       <BrandsSection />
