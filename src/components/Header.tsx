@@ -23,14 +23,14 @@ type Section = {
 
 const ABOUT_LINKS: Section[] = [
 	{ label: "Company", route: "/company" },
-	{ label: "Partners", route: "/partners" },
 	{ label: "Clients", route: "/clients" },
 	{ label: "Career", route: "/career" },
 ];
 
 const MAIN_LINKS: Section[] = [
-	{ label: "Catalog", route: "/catalog" },
+	{ label: "Products", route: "/catalog" },
 	{ label: "HSE Services", route: "/hse-services" },
+	{ label: "Partners", route: "/partners" },
 	{ label: "Projects", route: "/projects" },
 	{ label: "Contact", id: "contact" },
 ];

@@ -26,11 +26,10 @@ export const summaryServices: SummaryService[] = [
 ];
 
 export const oasisRegions = [
-  "Pakistan",
-  "Iraq",
-  "Saudi Arabia",
-  "United Kingdom",
   "United States of America",
+  "United Kingdom",
+  "Saudi Arabia",
+  "Pakistan",
 ] as const;
 
 export const oasisSpecializations = [
