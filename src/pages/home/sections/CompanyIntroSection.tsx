@@ -2,6 +2,7 @@ import DisplayHeading from "@/components/DisplayHeading";
 import Reveal from "@/components/Reveal";
 import SectionLabel from "@/components/SectionLabel";
 import SectionScaffold from "@/components/layout/SectionScaffold";
+import { companyStats } from "@/pages/company/data";
 
 export default function CompanyIntroSection() {
   return (
@@ -27,15 +28,10 @@ export default function CompanyIntroSection() {
 
       <Reveal delay={120}>
         <div className="mt-24 grid grid-cols-2 border-t border-border-soft md:grid-cols-4">
-          {[
-            ["20+", "Years in industry"],
-            ["10,000+", "Products supplied"],
-            ["500+", "Trusted brands"],
-            ["50+", "Marquee clients"],
-          ].map(([number, label], index) => (
-            <div key={label} className={`border-border-soft py-10 pl-8 ${index > 0 ? "md:border-l" : ""} ${index % 2 === 1 ? "border-l md:border-l" : ""}`}>
-              <div className="text-primary font-display-light mb-2 text-5xl md:text-6xl">{number}</div>
-              <div className="tracking-editorial text-[10px] uppercase text-foreground/55">{label}</div>
+          {companyStats.map((stat, index) => (
+            <div key={stat.label} className={`border-border-soft py-10 pl-8 ${index > 0 ? "md:border-l" : ""} ${index % 2 === 1 ? "border-l md:border-l" : ""}`}>
+              <div className="text-primary font-display-light mb-2 text-5xl md:text-6xl">{stat.value}</div>
+              <div className="tracking-editorial text-[10px] uppercase text-foreground/55">{stat.label}</div>
             </div>
           ))}
         </div>

@@ -34,7 +34,7 @@ export default function CatalogPage() {
 
   return (
     <div className="page-enter bg-white">
-      <section className="border-b border-border-soft bg-background-subtle pt-32 pb-16">
+      <section className="border-b border-border-soft bg-background-subtle pt-36 pb-12 md:pt-40 md:pb-14">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
@@ -44,7 +44,7 @@ export default function CatalogPage() {
                 <span>Product Reference</span>
               </div>
 
-              <h1 className="font-display text-5xl font-light leading-[0.95] text-primary-dark md:text-6xl lg:text-7xl">
+              <h1 className="font-display text-4xl font-light leading-[0.95] text-primary-dark md:text-5xl lg:text-6xl">
                 Product Catalog
               </h1>
 

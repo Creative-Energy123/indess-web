@@ -38,6 +38,18 @@ export default function IndustriesSection() {
             </div>
           </Reveal>
         ))}
+
+        <Reveal delay={420} className="bg-white">
+          <div className="aspect-[4/3] border border-border-soft/60 bg-background-subtle" />
+          <div className="p-8">
+            <div className="flex items-baseline justify-between mb-4">
+              <span className="text-[11px] tracking-editorial uppercase text-foreground/35">06</span>
+              <span className="h-px flex-1 mx-4 bg-border-soft" />
+            </div>
+            <h3 className="font-display-light text-3xl mb-3 text-foreground/30">&nbsp;</h3>
+            <p className="text-sm leading-relaxed font-light text-foreground/25">&nbsp;</p>
+          </div>
+        </Reveal>
       </div>
     </SectionScaffold>
   );

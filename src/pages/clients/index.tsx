@@ -4,14 +4,14 @@ import { allClientLogos } from "./data";
 export default function ClientsPage() {
   return (
     <Layout>
-      <section className="bg-primary-dark pt-40 pb-20 text-white">
+      <section className="bg-primary-dark pt-40 pb-14 text-white md:pt-44 md:pb-16">
         <div className="page-shell">
           <div className="mb-8 flex items-center gap-4">
             <span className="text-gold text-[11px] uppercase tracking-editorial">Clients</span>
             <span className="rule-gold h-px w-12" />
             <span className="text-[11px] uppercase tracking-editorial text-white/60">Selected References</span>
           </div>
-          <h1 className="font-display-light max-w-4xl text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+          <h1 className="font-display-light max-w-4xl text-4xl leading-[1.02] tracking-tight md:text-5xl lg:text-6xl">
             Trusted by the operators that power the region.
           </h1>
           <p className="mt-8 max-w-2xl text-[15px] font-light leading-[1.8] text-white/70">

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import hero from "@/assets/cin-hero.jpg";
@@ -155,19 +155,14 @@ const SLIDES: Slide[] = [
   },
 ];
 
-const AUTO_MS = 1800;
+const AUTO_MS = 2000;
 
 export default function HeroCarousel() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
   const startRef = useRef<number>(0);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (paused) {
-      return;
-    }
-
     startRef.current = performance.now();
     let raf = 0;
 
@@ -184,18 +179,24 @@ export default function HeroCarousel() {
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [active, paused]);
+  }, [active]);
 
   const goTo = (index: number) => {
     setActive(((index % SLIDES.length) + SLIDES.length) % SLIDES.length);
     setProgress(0);
   };
 
+  const goNext = () => {
+    goTo(active + 1);
+  };
+
+  const goPrev = () => {
+    goTo(active - 1);
+  };
+
   return (
     <section
       className="relative flex min-h-screen items-end overflow-hidden bg-primary-dark"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       data-anim-skip-children
     >
       {SLIDES.map((slide, index) => {
@@ -225,7 +226,7 @@ export default function HeroCarousel() {
         );
       })}
 
-      <div className="page-shell relative z-10 pb-32 pt-28 md:pb-40 md:pt-36">
+      <div className="page-shell relative z-10 pb-24 pt-24 md:pb-32 md:pt-32">
         <div className="grid items-end gap-8 lg:grid-cols-12">
           <div className="text-white lg:col-span-9">
             {SLIDES.map((slide, index) => (
@@ -235,7 +236,7 @@ export default function HeroCarousel() {
                 style={{ display: index === active ? "block" : "none" }}
               >
                 <h1
-                  className="animate-fade-up font-display-light mb-8 text-[clamp(2.5rem,6.6vw,6rem)] leading-[0.96] tracking-tight text-white"
+                  className="animate-fade-up font-display-light mb-8 text-[clamp(2.1rem,5.8vw,5rem)] leading-[0.96] tracking-tight text-white"
                   style={{ animationDelay: "260ms" }}
                 >
                   {slide.title}
@@ -260,11 +261,28 @@ export default function HeroCarousel() {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-20 border-t border-white/15 bg-gradient-to-t from-primary-dark/85 to-transparent">
-        <div className="page-shell flex items-center gap-8 py-6">
+        <div className="page-shell flex items-center gap-6 py-6">
           <div className="tabular-nums text-[10px] uppercase tracking-editorial text-white/65">
             <span className="text-white">{String(active + 1).padStart(2, "0")}</span>
             <span className="mx-2 text-white/40">/</span>
             <span>{String(SLIDES.length).padStart(2, "0")}</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={goPrev}
+              aria-label="Previous slide"
+              className="inline-flex h-8 w-8 items-center justify-center border border-white/35 text-white/85 transition-colors hover:border-white hover:bg-white/10 hover:text-white"
+            >
+              <ChevronLeft size={15} />
+            </button>
+            <button
+              onClick={goNext}
+              aria-label="Next slide"
+              className="inline-flex h-8 w-8 items-center justify-center border border-white/35 text-white/85 transition-colors hover:border-white hover:bg-white/10 hover:text-white"
+            >
+              <ChevronRight size={15} />
+            </button>
           </div>
 
           <div className="flex flex-1 items-center gap-3">
@@ -276,7 +294,7 @@ export default function HeroCarousel() {
                   key={slide.volume}
                   onClick={() => goTo(index)}
                   aria-label={`Go to slide ${index + 1}`}
-                  className="group relative h-px flex-1 py-3"
+                  className="group relative h-2 flex-1 py-3"
                 >
                   <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-white/20 transition-colors group-hover:bg-white/40" />
                   <span

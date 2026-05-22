@@ -9,17 +9,17 @@ import { oasisRegions, summaryServices, ventures, visionPoints } from "@/pages/h
 export default function HseServicesPage() {
   return (
     <Layout>
-      <section className="relative flex min-h-[70vh] items-end overflow-hidden">
+      <section className="relative flex min-h-[58vh] items-end overflow-hidden">
         <img src={hero} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/60 to-primary-dark/30" />
 
-        <div className="page-shell relative z-10 pb-24 text-white md:pb-32">
+        <div className="page-shell relative z-10 pb-16 pt-24 text-white md:pb-20 md:pt-28">
           <div className="mb-8 flex items-center gap-4">
             <span className="text-gold text-[11px] uppercase tracking-editorial">Strategic Joint Ventures</span>
             <span className="rule-gold h-px w-12" />
             <span className="text-[11px] uppercase tracking-editorial text-white/60">HSE Services</span>
           </div>
-          <h1 className="font-display-light max-w-5xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.98] tracking-tight">
+          <h1 className="font-display-light max-w-5xl text-[clamp(2.1rem,5.3vw,4.8rem)] leading-[0.98] tracking-tight">
             HSE services, trainings & workforce solutions.
           </h1>
           <p className="mt-8 max-w-2xl text-base font-light leading-relaxed text-white/75 md:text-lg">

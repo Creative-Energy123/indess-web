@@ -1,13 +1,33 @@
 import { ArrowLeft } from "lucide-react";
+import { Search } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Layout from "../../../components/layout/Layout";
 import Reveal from "../../../components/Reveal";
 import { CATALOG_DETAIL_PAGES } from "./data";
+import { CATALOG_CATEGORIES, CATALOG_FILTERS } from "../data";
+
+const matchesQuery = (query: string, value: string) => value.toLowerCase().includes(query.toLowerCase());
 
 export default function CatalogCategoryPage() {
   const { slug = "" } = useParams();
   const data = CATALOG_DETAIL_PAGES[slug];
+  const currentCategory = CATALOG_CATEGORIES.find((category) => category.cards.some((card) => card.id === slug));
+  const [activeCategory, setActiveCategory] = useState<string>(currentCategory?.key ?? "all");
+  const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    setActiveCategory(currentCategory?.key ?? "all");
+  }, [currentCategory?.key, slug]);
+
+  const quickNavCards = useMemo(() => {
+    const query = searchValue.trim().toLowerCase();
+
+    return CATALOG_CATEGORIES.filter((category) => activeCategory === "all" || category.key === activeCategory)
+      .flatMap((category) => category.cards)
+      .filter((card) => !query || matchesQuery(query, card.title) || card.products.some((product) => matchesQuery(query, product)));
+  }, [activeCategory, searchValue]);
 
   if (!data) {
     return (
@@ -27,7 +47,7 @@ export default function CatalogCategoryPage() {
 
   return (
     <Layout>
-      <section className="page-enter border-b border-border-soft bg-background-subtle pt-32 pb-16">
+      <section className="page-enter border-b border-border-soft bg-background-subtle pt-36 pb-12 md:pt-40 md:pb-14">
         <div className="page-shell">
           <Link to="/catalog" className="mb-10 inline-flex items-center gap-2 text-[11px] uppercase tracking-editorial text-foreground/60 transition-colors hover:text-primary">
             <ArrowLeft size={14} /> Back to Catalog
@@ -43,7 +63,7 @@ export default function CatalogCategoryPage() {
                 <span className="text-[11px] uppercase tracking-editorial text-foreground/60">Sub-Category</span>
               </div>
 
-              <h1 className="font-display-light text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+              <h1 className="font-display-light text-4xl leading-[1.02] tracking-tight md:text-5xl lg:text-6xl">
                 {data.title}
               </h1>
 
@@ -55,6 +75,82 @@ export default function CatalogCategoryPage() {
                 <img src={data.hero} alt={data.title} className="h-full w-full object-cover" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border-soft bg-white">
+        <div className="page-shell py-8">
+          <div className="grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-foreground/55">Product Navigation</p>
+              <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-foreground/75">
+                Use filters and search to quickly switch to any product sub-category page.
+              </p>
+            </div>
+            <div className="lg:col-span-5">
+              <label htmlFor="subcategory-search" className="mb-3 block text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/60">
+                Search Products
+              </label>
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/50" />
+                <input
+                  id="subcategory-search"
+                  type="text"
+                  value={searchValue}
+                  onChange={(event) => setSearchValue(event.target.value)}
+                  placeholder="Search by product or category"
+                  className="w-full border border-border-soft bg-white py-4 pl-11 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-foreground/45 focus:border-primary"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="sticky top-20 z-30 border-b border-border-soft bg-white/95 backdrop-blur">
+        <div className="page-shell py-4">
+          <div className="mb-4 flex gap-2 overflow-x-auto">
+            {CATALOG_FILTERS.map((filter) => {
+              const isActive = activeCategory === filter.key;
+
+              return (
+                <button
+                  key={filter.key}
+                  onClick={() => setActiveCategory(filter.key)}
+                  className={
+                    isActive
+                      ? "shrink-0 bg-primary px-4 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-white"
+                      : "shrink-0 border border-border-soft bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/70 transition-colors hover:border-primary hover:text-primary"
+                  }
+                >
+                  {filter.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {quickNavCards.map((card) => {
+              const isCurrent = card.id === slug;
+
+              return (
+                <Link
+                  key={card.id}
+                  to={`/catalog/${card.id}`}
+                  className={
+                    isCurrent
+                      ? "shrink-0 bg-secondary px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-foreground"
+                      : "shrink-0 border border-border-soft bg-white px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-foreground/70 transition-colors hover:border-primary hover:text-primary"
+                  }
+                >
+                  {card.title}
+                </Link>
+              );
+            })}
+            {quickNavCards.length === 0 && (
+              <span className="text-[11px] uppercase tracking-[0.16em] text-foreground/45">No matching products</span>
+            )}
           </div>
         </div>
       </section>

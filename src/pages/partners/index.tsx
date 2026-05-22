@@ -8,14 +8,14 @@ import { partnerPageData } from "./data";
 export default function PartnersPage() {
   return (
     <Layout>
-      <section className="bg-[hsl(210_100%_10%)] pt-40 pb-20 text-white">
+      <section className="bg-[hsl(210_100%_10%)] pt-40 pb-14 text-white md:pt-44 md:pb-16">
         <div className="page-shell">
           <div className="mb-8 flex items-center gap-4">
             <span className="text-gold text-[11px] uppercase tracking-editorial">Partners</span>
             <span className="rule-gold h-px w-12" />
             <span className="text-[11px] uppercase tracking-editorial text-white/60">Volume I · MMXXV</span>
           </div>
-          <h1 className="font-display-light max-w-4xl text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+          <h1 className="font-display-light max-w-4xl text-4xl leading-[1.02] tracking-tight md:text-5xl lg:text-6xl">
             Engineered alliances with global specialists.
           </h1>
           <p className="mt-8 max-w-2xl text-[15px] font-light leading-[1.8] text-white/70">

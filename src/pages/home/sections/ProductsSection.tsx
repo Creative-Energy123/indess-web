@@ -58,6 +58,12 @@ export default function ProductsSection() {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    to={`/catalog/${product.slug}`}
+                    className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-editorial text-primary transition-colors hover:text-gold"
+                  >
+                    View All <ArrowUpRight size={13} />
+                  </Link>
                 </div>
               </div>
             </Reveal>

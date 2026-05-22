@@ -1,10 +1,8 @@
 import imgMechanical from "@/assets/cin-mechanical.jpg";
 import imgElectrical from "@/assets/cin-electrical.jpg";
 import imgInstrumentation from "@/assets/cin-instrumentation.jpg";
-import imgLogistics from "@/assets/cin-logistics.jpg";
 import imgChemicals from "@/assets/cin-chemicals.jpg";
 import imgProcess from "@/assets/cin-process.jpg";
-import imgManufacturing from "@/assets/cin-manufacturing.jpg";
 import imgOilgas from "@/assets/industry-oilgas.jpg";
 import imgPetro from "@/assets/industry-petrochemical.jpg";
 import imgPower from "@/assets/industry-power.jpg";
@@ -40,7 +38,6 @@ export const industries: IndustryItem[] = [
   { n: "03", title: "Power Generation", img: imgPower, copy: "Generation, transmission and distribution networks." },
   { n: "04", title: "Ship Building", img: imgShip, copy: "Marine-grade systems for shipyards and offshore vessels." },
   { n: "05", title: "Aviation", img: imgAviation, copy: "Engine, avionics and ground support equipment." },
-  { n: "06", title: "Manufacturing", img: imgManufacturing, copy: "Heavy industrial assembly and process automation." },
 ];
 
 export const services: ServiceItem[] = [
@@ -59,12 +56,11 @@ export const expertiseItems: ExpertiseItem[] = [
 ];
 
 export const products: ProductItem[] = [
-  { n: "P/01", title: "Mechanical Equipment", img: imgMechanical, copy: "Pumps, valves, compressors, flanges, fittings and precision-engineered piping systems for high-pressure service.", items: ["Centrifugal & Positive Displacement Pumps", "Ball, Gate, Globe & Check Valves", "Compressors & Heat Exchangers", "Flanges, Fittings & Gaskets"] },
-  { n: "P/02", title: "Electrical Systems", img: imgElectrical, copy: "Switchgear, transformers, motors, drives and complete LV/MV electrical distribution infrastructure.", items: ["LV/MV Switchgear & Panels", "Transformers & Reactors", "Motors, Drives & Soft Starters", "Cables, Terminations & Accessories"] },
-  { n: "P/03", title: "Instrumentation & Control", img: imgInstrumentation, copy: "Field instruments, control systems and process automation for plant-wide visibility and safety.", items: ["Pressure, Flow & Level Transmitters", "PLC, DCS & SCADA Systems", "Control Valves & Actuators", "Safety & Fire-Gas Detection"] },
-  { n: "P/04", title: "Process Equipment", img: imgProcess, copy: "Heat exchangers, separators, vessels and skid-mounted process packages built to specification.", items: ["Pressure Vessels & Separators", "Heat Exchangers & Coolers", "Filtration & Treatment Skids", "Custom-Engineered Packages"] },
-  { n: "P/05", title: "Industrial Chemicals", img: imgChemicals, copy: "Lubricants, treatment chemicals and specialty fluids supporting refineries, pipelines and offshore operations.", items: ["Industrial Lubricants & Greases", "Drilling & Completion Fluids", "Corrosion & Scale Inhibitors", "Cleaning & Treatment Chemicals"] },
-  { n: "P/06", title: "Logistics & Spares", img: imgLogistics, copy: "Inventory programs, expedited spares and integrated freight to keep operations continuously online.", items: ["OEM Genuine Spare Parts", "Vendor-Managed Inventory", "Expedited Air & Sea Freight", "Project Cargo Coordination"] },
+  { n: "P/01", slug: "mechanical-equipment", title: "Mechanical Equipment", img: imgMechanical, copy: "Pumps, valves, compressors, flanges, fittings and precision-engineered piping systems for high-pressure service.", items: ["Centrifugal & Positive Displacement Pumps", "Ball, Gate, Globe & Check Valves", "Compressors & Heat Exchangers", "Flanges, Fittings & Gaskets"] },
+  { n: "P/02", slug: "electrical-systems", title: "Electrical Systems", img: imgElectrical, copy: "Switchgear, transformers, motors, drives and complete LV/MV electrical distribution infrastructure.", items: ["LV/MV Switchgear & Panels", "Transformers & Reactors", "Motors, Drives & Soft Starters", "Cables, Terminations & Accessories"] },
+  { n: "P/03", slug: "instrumentation-control", title: "Instrumentation & Control", img: imgInstrumentation, copy: "Field instruments, control systems and process automation for plant-wide visibility and safety.", items: ["Pressure, Flow & Level Transmitters", "PLC, DCS & SCADA Systems", "Control Valves & Actuators", "Safety & Fire-Gas Detection"] },
+  { n: "P/04", slug: "process-equipment", title: "Process Equipment", img: imgProcess, copy: "Heat exchangers, separators, vessels and skid-mounted process packages built to specification.", items: ["Pressure Vessels & Separators", "Heat Exchangers & Coolers", "Filtration & Treatment Skids", "Custom-Engineered Packages"] },
+  { n: "P/05", slug: "industrial-chemicals", title: "Industrial Chemicals", img: imgChemicals, copy: "Lubricants, treatment chemicals and specialty fluids supporting refineries, pipelines and offshore operations.", items: ["Industrial Lubricants & Greases", "Drilling & Completion Fluids", "Corrosion & Scale Inhibitors", "Cleaning & Treatment Chemicals"] },
 ];
 
 export const partners: PartnerItem[] = [

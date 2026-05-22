@@ -21,6 +21,10 @@ type Section = {
 	id?: string;
 };
 
+type HeaderProps = {
+	onRequestQuote?: () => void;
+};
+
 const ABOUT_LINKS: Section[] = [
 	{ label: "Company", route: "/company" },
 	{ label: "Clients", route: "/clients" },
@@ -35,20 +39,49 @@ const MAIN_LINKS: Section[] = [
 	{ label: "Contact", id: "contact" },
 ];
 
-export default function Header() {
+const TRANSPARENT_HEADER_ROUTES = ["/"] as const;
+
+export default function Header({ onRequestQuote }: HeaderProps) {
 	const [scrolled, setScrolled] = useState(false);
+	const [headerVisible, setHeaderVisible] = useState(true);
 	const [open, setOpen] = useState(false);
 	const navigate = useNavigate();
 	const location = useLocation();
-	const isHomeRoute = location.pathname === "/";
-	const useSolidHeader = scrolled || !isHomeRoute;
+	const useTransparentAtTop = TRANSPARENT_HEADER_ROUTES.includes(location.pathname as (typeof TRANSPARENT_HEADER_ROUTES)[number]);
+	const useSolidHeader = scrolled || !useTransparentAtTop;
 
 	useEffect(() => {
-		const onScroll = () => setScrolled(window.scrollY > 12);
+		let lastScrollY = window.scrollY;
+
+		const onScroll = () => {
+			const currentScrollY = window.scrollY;
+			setScrolled(currentScrollY > 12);
+
+			if (open) {
+				setHeaderVisible(true);
+				lastScrollY = currentScrollY;
+				return;
+			}
+
+			if (currentScrollY <= 12) {
+				setHeaderVisible(true);
+			} else if (currentScrollY > lastScrollY + 4) {
+				setHeaderVisible(false);
+			} else if (currentScrollY < lastScrollY - 4) {
+				setHeaderVisible(true);
+			}
+
+			lastScrollY = currentScrollY;
+		};
+
 		onScroll();
 		window.addEventListener("scroll", onScroll);
 		return () => window.removeEventListener("scroll", onScroll);
-	}, []);
+	}, [open]);
+
+	useEffect(() => {
+		setHeaderVisible(true);
+	}, [location.pathname]);
 
 	const goToSection = (id: string) => {
 		setOpen(false);
@@ -70,10 +103,20 @@ export default function Header() {
 		document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 	};
 
+	const handleRequestQuote = () => {
+		setOpen(false);
+		if (onRequestQuote) {
+			onRequestQuote();
+			return;
+		}
+		goToSection("contact");
+	};
+
 	return (
 		<header
 			className={cn(
-				"fixed top-0 inset-x-0 z-50 transition-all duration-500",
+				"fixed top-0 inset-x-0 z-50 transform transition-all duration-500",
+				headerVisible ? "translate-y-0" : "-translate-y-full",
 				useSolidHeader ? "bg-white/95 backdrop-blur-xl border-b border-neutral-200" : "bg-transparent"
 			)}
 		>
@@ -166,7 +209,7 @@ export default function Header() {
 				</NavigationMenu>
 
 				<button
-					onClick={() => goToSection("contact")}
+					onClick={handleRequestQuote}
 					className="btn btn-secondary btn-nav-cta hidden lg:inline-flex px-6 py-3 text-black"
 				>
 					GET A QUOTE
@@ -223,7 +266,7 @@ export default function Header() {
 							)
 						))}
 						<button
-							onClick={() => goToSection("contact")}
+							onClick={handleRequestQuote}
 							className="btn btn-secondary btn-nav-cta mt-4 inline-flex w-full justify-center py-3 text-black"
 						>
 							GET A QUOTE

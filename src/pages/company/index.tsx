@@ -8,23 +8,23 @@ import SectionLabel from "../../components/SectionLabel";
 import hero from "../../assets/cin-hero.jpg";
 import imgCEO from "../../assets/ceo-img.jpeg";
 import imgManufacturing from "../../assets/cin-manufacturing.jpg";
-import { companyGoals, companyRegions, companyTestimonials, companyValues } from "./data";
+import { companyGoals, companyRegions, companyStats, companyTestimonials, companyValues } from "./data";
 
 export default function CompanyPage() {
   return (
     <Layout>
-      <section className="relative flex min-h-[80vh] items-end overflow-hidden">
+      <section className="relative flex min-h-[60vh] items-end overflow-hidden">
         <img src={hero} alt="Industrial operations" className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-overlay hero-overlay-deep" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/35 via-primary-dark/55 to-primary-dark/75" />
 
-        <div className="page-shell relative z-10 pb-24 text-white md:pb-32">
+        <div className="page-shell relative z-10 pb-16 pt-24 text-white md:pb-20 md:pt-28">
           <div className="mb-8 flex items-center gap-4">
             <span className="text-gold text-[11px] uppercase tracking-editorial">About</span>
             <span className="rule-gold h-px w-10" />
             <span className="text-[11px] uppercase tracking-editorial text-white/65">The Company</span>
           </div>
-          <h1 className="font-display-light max-w-5xl text-[clamp(2.5rem,6.5vw,6rem)] leading-[0.98] tracking-tight">
+          <h1 className="font-display-light max-w-5xl text-[clamp(2.1rem,5.6vw,4.8rem)] leading-[0.98] tracking-tight">
             Engineering trust for the industries
             <br />
             that power the world.
@@ -62,19 +62,14 @@ export default function CompanyPage() {
           </div>
 
           <div className="mt-24 grid grid-cols-2 border-t border-border-soft md:grid-cols-4">
-            {[
-              ["20+", "Years experience"],
-              ["500+", "Products supplied"],
-              ["50+", "Trusted brands"],
-              ["11", "Countries served"],
-            ].map(([count, label], index) => (
+            {companyStats.map((stat, index) => (
               <Reveal
-                key={label}
+                key={stat.label}
                 delay={index * 80}
                 className={`border-border-soft py-10 pl-8 ${index > 0 ? "md:border-l" : ""} ${index % 2 === 1 ? "border-l md:border-l" : ""}`}
               >
-                <div className="text-primary font-display-light mb-2 text-5xl md:text-6xl">{count}</div>
-                <div className="tracking-editorial text-[10px] uppercase text-foreground/55">{label}</div>
+                <div className="text-primary font-display-light mb-2 text-5xl md:text-6xl">{stat.value}</div>
+                <div className="tracking-editorial text-[10px] uppercase text-foreground/55">{stat.label}</div>
               </Reveal>
             ))}
           </div>
@@ -196,15 +191,19 @@ export default function CompanyPage() {
             </Reveal>
           </div>
 
-          <div className="grid gap-px bg-border-soft md:grid-cols-2">
+          <div className="grid gap-10 md:grid-cols-2">
             {companyGoals.map((goal, index) => (
-              <Reveal key={goal.code} delay={index * 80} className="group bg-white p-12">
-                <div className="mb-8 flex items-center justify-between">
-                  <span className="text-gold text-[10px] uppercase tracking-editorial">{goal.code}</span>
-                  <ArrowUpRight size={16} className="text-foreground/30 transition-colors group-hover:text-primary" />
+              <Reveal key={goal.code} delay={index * 80} className="group relative overflow-hidden">
+                <img src={goal.image} alt={goal.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-8 text-white md:p-10">
+                  <div className="mb-7 flex items-center justify-between">
+                    <span className="text-gold text-[10px] uppercase tracking-editorial">{goal.code}</span>
+                    <ArrowUpRight size={16} className="text-white/70 transition-colors group-hover:text-gold" />
+                  </div>
+                  <h3 className="font-display-light mb-4 text-4xl leading-[1.08] md:text-5xl">{goal.title}</h3>
+                  <p className="max-w-xl text-[15px] font-light leading-[1.8] text-white/80">{goal.copy}</p>
                 </div>
-                <h3 className="font-display-light mb-4 text-3xl md:text-4xl">{goal.title}</h3>
-                <p className="text-[15px] font-light leading-[1.8] text-foreground/70">{goal.copy}</p>
               </Reveal>
             ))}
           </div>

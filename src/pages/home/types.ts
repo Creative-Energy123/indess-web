@@ -19,6 +19,7 @@ export type ExpertiseItem = {
 
 export type ProductItem = {
   n: string;
+  slug: string;
   title: string;
   img: string;
   copy: string;

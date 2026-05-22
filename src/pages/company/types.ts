@@ -10,6 +10,7 @@ export type CompanyGoal = {
   code: string;
   title: string;
   copy: string;
+  image: string;
 };
 
 export type CompanyTestimonial = {

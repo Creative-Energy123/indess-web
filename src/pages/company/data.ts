@@ -1,6 +1,17 @@
 import { Compass, Gem, Rocket, Target } from "lucide-react";
+import goalLeadership from "@/assets/goal-leadership.jpg";
+import goalNetwork from "@/assets/goal-network.jpg";
+import goalExcellence from "@/assets/goal-excellence.jpg";
+import goalSustainability from "@/assets/goal-sustainability.jpg";
 
 import type { CompanyGoal, CompanyRegion, CompanyTestimonial, CompanyValue } from "./types";
+
+export const companyStats = [
+  { value: "20+", label: "Years in industry" },
+  { value: "10,000+", label: "Products supplied" },
+  { value: "500+", label: "Trusted brands" },
+  { value: "50+", label: "Marquee clients" },
+] as const;
 
 export const companyValues: CompanyValue[] = [
   {
@@ -30,21 +41,25 @@ export const companyGoals: CompanyGoal[] = [
     code: "G/01",
     title: "Regional Leadership",
     copy: "Become the most trusted industrial equipment partner across the GCC by 2030.",
+    image: goalLeadership,
   },
   {
     code: "G/02",
     title: "Global Network",
     copy: "Expand our manufacturer alliances across Europe, Asia Pacific and the Americas.",
+    image: goalNetwork,
   },
   {
     code: "G/03",
     title: "Operational Excellence",
     copy: "Set the regional benchmark for sourcing accuracy, lead-time and after-sales response.",
+    image: goalExcellence,
   },
   {
     code: "G/04",
     title: "Sustainable Supply",
     copy: "Champion energy-efficient equipment and responsible logistics across our portfolio.",
+    image: goalSustainability,
   },
 ];
 

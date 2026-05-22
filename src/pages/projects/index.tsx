@@ -22,16 +22,16 @@ const projects = [
 const ProjectsPage = () => {
   return (
     <Layout>
-      <section className="relative flex min-h-[70vh] items-end overflow-hidden">
+      <section className="relative flex min-h-[58vh] items-end overflow-hidden">
         <img src={hero} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(210_100%_8%)] via-[hsl(210_100%_8%)]/60 to-[hsl(210_100%_8%)]/30" />
-        <div className="page-shell relative z-10 pb-24 text-white md:pb-32">
+        <div className="page-shell relative z-10 pb-16 pt-24 text-white md:pb-20 md:pt-28">
           <div className="mb-8 flex items-center gap-4">
             <span className="text-gold text-[11px] uppercase tracking-editorial">Selected Work</span>
             <span className="rule-gold h-px w-12" />
             <span className="text-[11px] uppercase tracking-editorial text-white/60">Projects</span>
           </div>
-          <h1 className="font-display-light max-w-4xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.98] tracking-tight">
+          <h1 className="font-display-light max-w-4xl text-[clamp(2.1rem,5.3vw,4.8rem)] leading-[0.98] tracking-tight">
             Engineered supply
             <br />
             for landmark projects.
