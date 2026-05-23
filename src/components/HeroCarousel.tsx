@@ -6,11 +6,6 @@ import { Link } from "react-router-dom";
 import hero from "@/assets/cin-hero.jpg";
 import imgMechanical from "@/assets/cin-mechanical.jpg";
 import imgOilgas from "@/assets/industry-oilgas.jpg";
-import imgPetro from "@/assets/industry-petrochemical.jpg";
-import imgPower from "@/assets/industry-power.jpg";
-import imgShip from "@/assets/industry-shipping.jpg";
-import imgAviation from "@/assets/industry-aviation.jpg";
-import imgManufacturing from "@/assets/cin-manufacturing.jpg";
 import imgHse from "@/assets/hse-hero.jpg";
 
 type Slide = {
@@ -70,78 +65,8 @@ const SLIDES: Slide[] = [
     cta: { label: "Explore Industries", to: "/#industries" },
   },
   {
-    eyebrow: "Industries We Serve - Petrochemical",
-    volume: "Chapter IV",
-    title: (
-      <>
-        Petrochemical systems,
-        <br />
-        <span className="text-gold italic font-light">built for process reliability.</span>
-      </>
-    ),
-    copy: "Refining, processing and chemical handling infrastructure supported with equipment continuity and application-focused sourcing.",
-    image: imgPetro,
-    cta: { label: "Explore Industries", to: "/#industries" },
-  },
-  {
-    eyebrow: "Industries We Serve - Power Generation",
-    volume: "Chapter V",
-    title: (
-      <>
-        Power assets secured
-        <br />
-        with dependable supply.
-      </>
-    ),
-    copy: "Supporting generation, transmission and distribution networks with mission-critical electrical and mechanical systems.",
-    image: imgPower,
-    cta: { label: "Explore Industries", to: "/#industries" },
-  },
-  {
-    eyebrow: "Industries We Serve - Ship Building",
-    volume: "Chapter VI",
-    title: (
-      <>
-        Marine-grade supply
-        <br />
-        for shipyards and fleets.
-      </>
-    ),
-    copy: "From ship building to offshore servicing, our portfolio supports uptime in high-demand marine environments.",
-    image: imgShip,
-    cta: { label: "Explore Industries", to: "/#industries" },
-  },
-  {
-    eyebrow: "Industries We Serve - Aviation",
-    volume: "Chapter VII",
-    title: (
-      <>
-        Aviation support,
-        <br />
-        <span className="text-gold italic font-light">with precision in every component.</span>
-      </>
-    ),
-    copy: "Engine systems, avionics-adjacent components and ground support equipment supplied for high-reliability operations.",
-    image: imgAviation,
-    cta: { label: "Explore Industries", to: "/#industries" },
-  },
-  {
-    eyebrow: "Industries We Serve - Manufacturing",
-    volume: "Chapter VIII",
-    title: (
-      <>
-        Manufacturing lines,
-        <br />
-        <span className="text-gold italic font-light">kept moving.</span>
-      </>
-    ),
-    copy: "Heavy industrial assembly and process automation supported by fit-for-purpose product sourcing and lifecycle support.",
-    image: imgManufacturing,
-    cta: { label: "Explore Industries", to: "/#industries" },
-  },
-  {
     eyebrow: "HSE Services & Trainings",
-    volume: "Chapter IX",
+    volume: "Chapter IV",
     title: (
       <>
         Safety, certified.

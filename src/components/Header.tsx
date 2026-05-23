@@ -21,10 +21,6 @@ type Section = {
 	id?: string;
 };
 
-type HeaderProps = {
-	onRequestQuote?: () => void;
-};
-
 const ABOUT_LINKS: Section[] = [
 	{ label: "Company", route: "/company" },
 	{ label: "Clients", route: "/clients" },
@@ -41,7 +37,7 @@ const MAIN_LINKS: Section[] = [
 
 const TRANSPARENT_HEADER_ROUTES = ["/"] as const;
 
-export default function Header({ onRequestQuote }: HeaderProps) {
+export default function Header() {
 	const [scrolled, setScrolled] = useState(false);
 	const [headerVisible, setHeaderVisible] = useState(true);
 	const [open, setOpen] = useState(false);
@@ -103,15 +99,6 @@ export default function Header({ onRequestQuote }: HeaderProps) {
 		document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 	};
 
-	const handleRequestQuote = () => {
-		setOpen(false);
-		if (onRequestQuote) {
-			onRequestQuote();
-			return;
-		}
-		goToSection("contact");
-	};
-
 	return (
 		<header
 			className={cn(
@@ -132,8 +119,9 @@ export default function Header({ onRequestQuote }: HeaderProps) {
 					<img src={logo} alt="INDESS" className="h-8 w-auto" width={160} height={32} />
 				</Link>
 
-				<NavigationMenu className="hidden lg:flex">
-					<NavigationMenuList className="gap-1">
+				<div className="hidden flex-1 justify-center lg:flex">
+					<NavigationMenu>
+						<NavigationMenuList className="gap-1">
 						<NavigationMenuItem>
 							<NavigationMenuTrigger
 								className={cn(
@@ -205,15 +193,11 @@ export default function Header({ onRequestQuote }: HeaderProps) {
 
 							return null;
 						})}
-					</NavigationMenuList>
-				</NavigationMenu>
+						</NavigationMenuList>
+					</NavigationMenu>
+				</div>
 
-				<button
-					onClick={handleRequestQuote}
-					className="btn btn-secondary btn-nav-cta hidden lg:inline-flex px-6 py-3 text-black"
-				>
-					GET A QUOTE
-				</button>
+				<div className="hidden w-[160px] lg:block" aria-hidden="true" />
 
 				<button
 					onClick={() => setOpen((value) => !value)}
@@ -265,12 +249,6 @@ export default function Header({ onRequestQuote }: HeaderProps) {
 								</button>
 							)
 						))}
-						<button
-							onClick={handleRequestQuote}
-							className="btn btn-secondary btn-nav-cta mt-4 inline-flex w-full justify-center py-3 text-black"
-						>
-							GET A QUOTE
-						</button>
 					</nav>
 				</div>
 			)}

@@ -28,6 +28,7 @@ export const summaryServices: SummaryService[] = [
 export const oasisRegions = [
   "United States of America",
   "United Kingdom",
+  "Central Asia",
   "Saudi Arabia",
   "Pakistan",
 ] as const;
@@ -40,9 +41,6 @@ export const oasisSpecializations = [
   "International Recruitment Support",
   "Corporate Training Programs",
   "Industrial Safety Consultancy",
-] as const;
-
-export const jhrsSpecializations = [
   "Overseas Recruitment",
   "International Workforce Mobilization",
   "Skilled & Unskilled Manpower Supply",
@@ -67,13 +65,5 @@ export const ventures: JointVenture[] = [
     intro:
       "OASIS Pvt. Ltd. LLC is an international Human Resource, HSE Training, Consultancy, and Recruitment Solutions provider operating across Pakistan, the Middle East, the United Kingdom, and the United States. With extensive experience in oil & gas, construction, drilling, engineering and industrial sectors, OASIS delivers professional manpower and safety solutions to international clients.",
     specializations: [...oasisSpecializations],
-  },
-  {
-    code: "Joint Venture 02",
-    title: "Jaffar HR Services",
-    location: "Pakistan",
-    intro:
-      "Jaffar HR Services (JHRS) is a licensed Overseas Employment Promoter of Pakistan operating under License No. 3551/RWP. The organization supports international employers by providing reliable recruitment and mobilization services for various industrial sectors.",
-    specializations: [...jhrsSpecializations],
   },
 ];

@@ -47,40 +47,8 @@ export default function CatalogCategoryPage() {
 
   return (
     <Layout>
-      <section className="page-enter border-b border-border-soft bg-background-subtle pt-36 pb-12 md:pt-40 md:pb-14">
-        <div className="page-shell">
-          <Link to="/catalog" className="mb-10 inline-flex items-center gap-2 text-[11px] uppercase tracking-editorial text-foreground/60 transition-colors hover:text-primary">
-            <ArrowLeft size={14} /> Back to Catalog
-          </Link>
-
-          <div className="grid items-end gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <div className="mb-6 flex items-center gap-4">
-                <span className="text-gold text-[11px] font-medium uppercase tracking-editorial">
-                  {data.parentN} - {data.parent}
-                </span>
-                <span className="rule-gold h-px w-10" />
-                <span className="text-[11px] uppercase tracking-editorial text-foreground/60">Sub-Category</span>
-              </div>
-
-              <h1 className="font-display-light text-4xl leading-[1.02] tracking-tight md:text-5xl lg:text-6xl">
-                {data.title}
-              </h1>
-
-              <p className="mt-6 max-w-xl text-[15px] font-light leading-[1.8] text-foreground/70">{data.intro}</p>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={data.hero} alt={data.title} className="h-full w-full object-cover" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-border-soft bg-white">
-        <div className="page-shell py-8">
+      <section className="page-enter border-b border-border-soft bg-white pt-32 md:pt-36">
+        <div className="page-shell pb-8">
           <div className="grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="text-[11px] uppercase tracking-[0.18em] text-foreground/55">Product Navigation</p>
@@ -151,6 +119,38 @@ export default function CatalogCategoryPage() {
             {quickNavCards.length === 0 && (
               <span className="text-[11px] uppercase tracking-[0.16em] text-foreground/45">No matching products</span>
             )}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border-soft bg-background-subtle py-12 md:py-14">
+        <div className="page-shell">
+          <Link to="/catalog" className="mb-10 inline-flex items-center gap-2 text-[11px] uppercase tracking-editorial text-foreground/60 transition-colors hover:text-primary">
+            <ArrowLeft size={14} /> Back to Catalog
+          </Link>
+
+          <div className="grid items-end gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <div className="mb-6 flex items-center gap-4">
+                <span className="text-gold text-[11px] font-medium uppercase tracking-editorial">
+                  {data.parentN} - {data.parent}
+                </span>
+                <span className="rule-gold h-px w-10" />
+                <span className="text-[11px] uppercase tracking-editorial text-foreground/60">Sub-Category</span>
+              </div>
+
+              <h1 className="font-display-light text-4xl leading-[1.02] tracking-tight md:text-5xl lg:text-6xl">
+                {data.title}
+              </h1>
+
+              <p className="mt-6 max-w-xl text-[15px] font-light leading-[1.8] text-foreground/70">{data.intro}</p>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img src={data.hero} alt={data.title} className="h-full w-full object-cover" />
+              </div>
+            </div>
           </div>
         </div>
       </section>

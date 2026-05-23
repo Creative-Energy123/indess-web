@@ -4,6 +4,8 @@ import imgManufacturing from "@/assets/cin-manufacturing.jpg";
 import { regions } from "@/pages/home/data";
 
 export default function PresenceSection() {
+  const totalCountries = regions.reduce((count, region) => count + region.countries.length, 0);
+
   return (
     <SectionScaffold id="presence" className="section-space-lg relative overflow-hidden bg-primary-dark text-white">
       <img src={imgManufacturing} alt="Industrial global network" className="absolute inset-0 h-full w-full object-cover opacity-15" />
@@ -26,11 +28,11 @@ export default function PresenceSection() {
             </div>
             <div className="lg:col-span-5 lg:col-start-8 lg:pt-8">
               <p className="text-[15px] text-white/70 leading-[1.8] font-light">
-                INDESS supports projects across the GCC, Europe, the Americas and Asia Pacific with
+                INDESS supports projects across the GCC, Europe, the Americas, Central Asia and Asia Pacific with
                 sourcing, logistics and after-sales continuity.
               </p>
               <div className="mt-10 grid grid-cols-3 gap-6">
-                {[ ["11", "Countries"], ["4", "Regions"], ["24/7", "Support"] ].map(([n, l]) => (
+                {[ [String(totalCountries), "Countries"], [String(regions.length), "Regions"], ["24/7", "Support"] ].map(([n, l]) => (
                   <div key={l}>
                     <div className="font-display-light text-4xl text-gold">{n}</div>
                     <div className="text-[10px] tracking-editorial uppercase text-white/50 mt-1">{l}</div>
@@ -41,7 +43,7 @@ export default function PresenceSection() {
           </div>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-px bg-white/10 border border-white/10">
           {regions.map((region, index) => (
             <Reveal key={region.region} delay={index * 90}>
               <div className="bg-primary-dark p-10 h-full">

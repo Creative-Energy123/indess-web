@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import QuoteRequestPanel from "@/components/QuoteRequestPanel";
 import ContactSection from "@/pages/home/sections/ContactSection";
 import HomePage from "@/pages/home";
 import CompanyPage from "@/pages/company";
@@ -12,14 +11,11 @@ import ClientsPage from "@/pages/clients";
 import ProjectsPage from "@/pages/projects";
 import NotFoundPage from "@/pages/not-found";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
 
 export default function App() {
-  const [quotePanelOpen, setQuotePanelOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-white">
-      <Header onRequestQuote={() => setQuotePanelOpen(true)} />
+      <Header />
 
       <main>
         <Routes>
@@ -35,11 +31,9 @@ export default function App() {
         </Routes>
       </main>
 
-      <ContactSection onRequestQuote={() => setQuotePanelOpen(true)} />
+      <ContactSection />
 
       <Footer />
-
-      <QuoteRequestPanel open={quotePanelOpen} onOpenChange={setQuotePanelOpen} />
     </div>
   );
 }

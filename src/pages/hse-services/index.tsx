@@ -62,11 +62,6 @@ export default function HseServicesPage() {
                   ))}
                 </ul>
               </div>
-              <div className="mt-8 flex aspect-[4/3] flex-col items-center justify-center border border-border-soft bg-background-subtle p-10 lg:p-12">
-                <span className="text-primary font-display-light text-5xl tracking-wide-2">JHRS</span>
-                <span className="mt-4 text-[10px] uppercase tracking-editorial text-foreground/60">Jaffar HR Services</span>
-                <span className="text-gold mt-2 text-[10px] uppercase tracking-editorial">License No. 3551/RWP</span>
-              </div>
             </Reveal>
 
             <Reveal delay={120} className="lg:col-span-7">
@@ -92,21 +87,6 @@ export default function HseServicesPage() {
               >
                 Visit oasispak.com <ArrowUpRight size={14} />
               </a>
-
-              <div className="mt-12 border-t border-border-soft pt-10">
-                <p className="text-gold mb-4 text-[11px] uppercase tracking-editorial">{ventures[1].code} · Integrated Service Partner</p>
-                <h3 className="font-display-light mb-5 text-3xl leading-[1.15] tracking-tight md:text-4xl">{ventures[1].title}</h3>
-                <p className="mb-6 text-[15px] font-light leading-[1.8] text-foreground/70">{ventures[1].intro}</p>
-                <p className="mb-4 text-[11px] uppercase tracking-editorial text-foreground/60">Specialisations</p>
-                <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
-                  {ventures[1].specializations.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[14px] font-light text-foreground/80">
-                      <CheckCircle2 size={16} className="text-primary mt-1 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </Reveal>
           </div>
         </div>

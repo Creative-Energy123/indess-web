@@ -4,7 +4,6 @@ import BrandsSection from "@/pages/home/sections/BrandsSection";
 import CeoMessageSection from "@/pages/home/sections/CeoMessageSection";
 import CompanyIntroSection from "@/pages/home/sections/CompanyIntroSection";
 import ExpertiseSection from "@/pages/home/sections/ExpertiseSection";
-import IndustriesSection from "@/pages/home/sections/IndustriesSection";
 import PresenceSection from "@/pages/home/sections/PresenceSection";
 import ProductsSection from "@/pages/home/sections/ProductsSection";
 
@@ -18,7 +17,6 @@ export default function HomePage() {
       <CeoMessageSection />
       <ExpertiseSection />
       <ProductsSection />
-      <IndustriesSection />
       <BrandsSection />
       <PresenceSection />
     </Layout>

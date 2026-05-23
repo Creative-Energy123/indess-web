@@ -3,11 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import SectionScaffold from "@/components/layout/SectionScaffold";
 import imgLogistics from "@/assets/cin-logistics.jpg";
 
-type ContactSectionProps = {
-  onRequestQuote: () => void;
-};
-
-export default function ContactSection({ onRequestQuote }: ContactSectionProps) {
+export default function ContactSection() {
   return (
     <SectionScaffold id="contact" className="section-space-lg relative overflow-hidden bg-primary-dark text-white">
       <img src={imgLogistics} alt="Industrial background" className="absolute inset-0 h-full w-full object-cover" width={1920} height={1080} loading="lazy" />
@@ -19,13 +15,9 @@ export default function ContactSection({ onRequestQuote }: ContactSectionProps) 
         <h2 className="font-display-light mx-auto mb-10 max-w-4xl text-5xl leading-[0.96] tracking-tight text-white md:text-6xl lg:text-7xl">
           Bring INDESS into your next industrial project.
         </h2>
-        <button
-          type="button"
-          onClick={onRequestQuote}
-          className="btn btn-primary btn-nav-cta inline-flex items-center gap-3 px-10 py-4"
-        >
-          Request Consultation <ArrowUpRight size={14} />
-        </button>
+        <span className="inline-flex items-center gap-3 px-10 py-4 text-[11px] uppercase tracking-editorial text-white/75">
+          Contact our team for project consultation <ArrowUpRight size={14} />
+        </span>
       </div>
     </SectionScaffold>
   );

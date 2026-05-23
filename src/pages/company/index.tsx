@@ -6,11 +6,16 @@ import Layout from "../../components/layout/Layout";
 import Reveal from "../../components/Reveal";
 import SectionLabel from "../../components/SectionLabel";
 import hero from "../../assets/cin-hero.jpg";
-import imgCEO from "../../assets/ceo-img.jpeg";
 import imgManufacturing from "../../assets/cin-manufacturing.jpg";
+import { industries } from "../home/data";
 import { companyGoals, companyRegions, companyStats, companyTestimonials, companyValues } from "./data";
 
 export default function CompanyPage() {
+  const companyCountryCount = companyRegions.reduce(
+    (count, region) => count + region.countries.split(",").map((country) => country.trim()).filter(Boolean).length,
+    0,
+  );
+
   return (
     <Layout>
       <section className="relative flex min-h-[60vh] items-end overflow-hidden">
@@ -48,17 +53,45 @@ export default function CompanyPage() {
             <Reveal delay={120} className="space-y-6 text-[15px] font-light leading-[1.8] text-foreground/70 lg:col-span-5 lg:pt-6">
               <p>
                 As an established supplier in the energy sector, INDESS delivers top-quality equipment sourced
-                from globally renowned manufacturers selected for performance, durability and efficiency.
+                from globally renowned manufacturers and selected for performance, durability and efficiency.
               </p>
               <p>
                 Our team of experienced engineers and supply professionals understands the critical role
                 reliable equipment plays in upstream, midstream and downstream operations.
               </p>
-              <p>
-                From a single specialised valve to fully integrated process packages, every engagement is
-                engineered around precision, accountability and long-term partnership.
-              </p>
             </Reveal>
+          </div>
+
+          <div className="mt-20 mb-20">
+            <Reveal className="mb-10">
+              <div className="text-[10px] uppercase tracking-editorial text-gold">Our Industries</div>
+            </Reveal>
+
+            <div className="grid gap-px bg-border-soft md:grid-cols-2 lg:grid-cols-5">
+              {industries.map((industry) => (
+                <Reveal key={industry.title} delay={Number(industry.n) * 60} className="bg-white group block">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={industry.img}
+                      alt={industry.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      width={1280}
+                      height={960}
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="mb-4 flex items-baseline justify-between">
+                      <span className="text-[11px] uppercase tracking-editorial text-gold">{industry.n}</span>
+                      <span className="mx-4 h-px flex-1 bg-border-soft" />
+                      <ArrowUpRight size={16} className="text-foreground/30 transition-colors group-hover:text-primary" />
+                    </div>
+                    <h3 className="font-display-light mb-3 text-3xl">{industry.title}</h3>
+                    <p className="text-sm font-light leading-relaxed text-foreground/65">{industry.copy}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
 
           <div className="mt-24 grid grid-cols-2 border-t border-border-soft md:grid-cols-4">
@@ -78,19 +111,16 @@ export default function CompanyPage() {
 
       <section className="section-space-lg bg-background-subtle">
         <div className="page-shell">
-          <div className="grid items-center gap-12 lg:grid-cols-12">
-            <Reveal className="lg:col-span-5">
-              <div className="aspect-[4/5] overflow-hidden bg-foreground/5">
-                <img src={imgCEO} alt="CEO portrait" loading="lazy" className="h-full w-full object-cover grayscale" width={1080} height={1350} />
-              </div>
-              <div className="mt-6">
-                <p className="text-gold text-[10px] uppercase tracking-editorial">The Chief Executive</p>
-                <p className="font-display-light mt-2 text-2xl">A message from the CEO</p>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <Reveal className="border-b border-border-soft pb-8 lg:col-span-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
+              <SectionLabel n="02" label="A Message From CEO" />
+              <div className="mt-8">
+                <p className="font-display-light text-4xl leading-[0.95] text-foreground md:text-5xl">Muhammad Sajjad</p>
+                <p className="mt-3 text-[12px] uppercase tracking-editorial text-gold">Chief Executive Officer</p>
               </div>
             </Reveal>
 
-            <Reveal delay={140} className="lg:col-span-7 lg:pl-12">
-              <SectionLabel n="02" label="A Message From CEO" />
+            <Reveal delay={140} className="border border-border-soft bg-white p-8 md:p-10 lg:col-span-8 lg:p-12">
               <Quote className="text-gold mb-6" size={28} />
               <p className="font-display-light mb-8 text-3xl leading-[1.25] text-foreground md:text-4xl">
                 “At INDESS we believe quality is not a feature - it is the foundation upon which every reliable operation is built.”
@@ -251,16 +281,16 @@ export default function CompanyPage() {
                 <span className="text-[11px] uppercase tracking-editorial text-white/65">Worldwide Presence</span>
               </div>
               <h2 className="font-display-light text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
-                A network spanning eleven countries.
+                A network spanning {companyCountryCount} countries.
               </h2>
             </Reveal>
             <Reveal delay={120} className="text-[15px] font-light leading-[1.8] text-white/70 lg:col-span-5 lg:col-start-8 lg:pt-8">
-              From the GCC to Europe, the Americas and Asia Pacific, INDESS partners with manufacturers
+              From the GCC to Europe, the Americas, Central Asia and Asia Pacific, INDESS partners with manufacturers
               and operators around the globe.
             </Reveal>
           </div>
 
-          <div className="grid gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-5">
             {companyRegions.map((region, index) => (
               <Reveal key={region.region} delay={index * 80} className="bg-primary-dark p-8">
                 <p className="text-gold mb-4 text-[10px] uppercase tracking-editorial">{region.region}</p>

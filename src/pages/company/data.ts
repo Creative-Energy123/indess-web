@@ -83,7 +83,8 @@ export const companyTestimonials: CompanyTestimonial[] = [
 
 export const companyRegions: CompanyRegion[] = [
   { region: "Middle East", countries: "UAE, Oman, Qatar, Kuwait, Bahrain, Saudi Arabia" },
-  { region: "Europe", countries: "United Kingdom, Estonia" },
+  { region: "Europe", countries: "United Kingdom, European Union Countries" },
   { region: "Americas", countries: "United States" },
-  { region: "Asia Pacific", countries: "South Korea, Japan" },
+  { region: "Asia Pacific", countries: "South Korea, Japan, Singapore, China, Malaysia" },
+  { region: "Central Asia", countries: "Kazakhstan, Turkmenistan, Uzbekistan" },
 ];
