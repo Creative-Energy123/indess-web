@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollManager from "@/components/ScrollManager";
 import ContactSection from "@/pages/home/sections/ContactSection";
 import HomePage from "@/pages/home";
 import CompanyPage from "@/pages/company";
@@ -15,6 +16,7 @@ import { Route, Routes } from "react-router-dom";
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
+      <ScrollManager />
       <Header />
 
       <main>

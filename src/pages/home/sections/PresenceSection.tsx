@@ -16,7 +16,7 @@ export default function PresenceSection() {
           <div className="grid lg:grid-cols-12 gap-12 mb-16">
             <div className="lg:col-span-6">
               <div className="flex items-center gap-4 mb-8">
-                <span className="text-[11px] tracking-editorial uppercase text-gold">08</span>
+                <span className="text-[11px] tracking-editorial uppercase text-gold">06</span>
                 <span className="h-px w-10 rule-gold" />
                 <span className="text-[11px] tracking-editorial uppercase text-white/60">Worldwide Presence</span>
               </div>

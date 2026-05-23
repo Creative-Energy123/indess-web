@@ -8,7 +8,7 @@ export default function BrandsSection() {
     <SectionScaffold id="brands" className="section-space-lg bg-background-subtle">
       <div className="grid lg:grid-cols-12 gap-12 mb-20">
         <div className="lg:col-span-6">
-          <SectionLabel n="06" label="Brands" />
+          <SectionLabel n="05" label="Brands" />
           <DisplayHeading>The world&apos;s most trusted manufacturers under one roof.</DisplayHeading>
         </div>
         <div className="lg:col-span-5 lg:col-start-8 lg:pt-8">

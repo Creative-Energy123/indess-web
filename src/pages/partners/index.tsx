@@ -27,38 +27,24 @@ export default function PartnersPage() {
 
       <section className="section-space-lg bg-white">
         <div className="page-shell">
-          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display-light max-w-2xl text-4xl leading-tight text-foreground md:text-5xl">
-              Partner network at a glance.
-            </h2>
-            <p className="max-w-xl text-[15px] font-light leading-[1.8] text-foreground/70">
-              Six specialist manufacturers, each vetted for product integrity, certifications and lifecycle support.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-px border border-border-soft bg-border-soft md:grid-cols-2 lg:grid-cols-3">
-            {partnerPageData.map((partner, index) => (
-              <Reveal key={partner.code} delay={index * 80}>
-                <article className="group h-full bg-white p-8 transition-colors hover:bg-background-subtle md:p-9">
-                  <div className="mb-6 flex items-center justify-between gap-3">
-                    <span className="text-gold text-[11px] uppercase tracking-editorial">{partner.code}</span>
-                    <span className="text-[11px] uppercase tracking-editorial text-foreground/50">{partner.country}</span>
-                  </div>
-                  <div className="mb-8 flex min-h-[64px] items-center">
-                    <img src={partner.logo} alt={`${partner.name} logo`} loading="lazy" className="max-h-14 w-auto object-contain opacity-90 transition-opacity group-hover:opacity-100" />
-                  </div>
-                  <h3 className="font-display-light text-2xl leading-tight text-foreground">{partner.name}</h3>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {partnerPageData.map((partner, index) => (
               <Reveal key={`${partner.code}-details`} delay={index * 65}>
                 <article className="h-full border border-border-soft bg-white p-8 md:p-9">
-                  <div className="text-gold mb-4 flex items-center gap-3 text-[11px] uppercase tracking-editorial">
-                    <MapPin size={13} /> {partner.country}
+                  <div className="mb-8 flex items-start justify-between gap-6">
+                    <div className="text-gold flex items-center gap-3 text-[11px] uppercase tracking-editorial">
+                      <MapPin size={13} /> {partner.country}
+                    </div>
+                    {partner.logo ? (
+                      <img
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        loading="lazy"
+                        className="max-h-16 w-auto max-w-[180px] shrink-0 object-contain md:max-h-20 md:max-w-[220px]"
+                      />
+                    ) : (
+                      <span className="shrink-0 text-[15px] font-medium uppercase tracking-[0.2em] text-primary/65">DIFINIT</span>
+                    )}
                   </div>
                   <h3 className="font-display-light mb-4 text-3xl leading-tight text-foreground">{partner.name}</h3>
                   <p className="mb-6 text-[15px] font-light leading-[1.8] text-foreground/70">{partner.summary}</p>

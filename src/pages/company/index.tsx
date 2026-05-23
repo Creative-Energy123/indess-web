@@ -137,10 +137,6 @@ export default function CompanyPage() {
                   unrivalled expertise.
                 </p>
               </div>
-              <div className="mt-10 border-t border-border-soft pt-6">
-                <p className="font-display-light text-2xl">Muhammad Sajjad</p>
-                <p className="mt-1 text-[11px] uppercase tracking-editorial text-gold">The Chief Executive</p>
-              </div>
             </Reveal>
           </div>
         </div>

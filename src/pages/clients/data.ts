@@ -1,5 +1,12 @@
 import type { ClientPageItem } from "./types";
 
+import omanDrydockLogo from "@/assets/clients/OMAN-300x180.jpeg";
+import adacLogo from "@/assets/clients/abudhabi_airport_logo.png";
+import arlLogo from "@/assets/clients/ARL.png";
+import enecLogo from "@/assets/clients/emirates_logo.png";
+import orientLogo from "@/assets/clients/orient.jfif";
+import parcoLogo from "@/assets/clients/PARCO.png";
+
 const allClientLogoModules = import.meta.glob("../../assets/clients/logo_*.png", {
   eager: true,
   import: "default",
@@ -15,85 +22,93 @@ const clientLogoBySlug = Object.fromEntries(
 
 const getClientLogo = (slug: string): string | undefined => clientLogoBySlug[slug.toLowerCase()];
 
-export const allClientLogos = Object.entries(allClientLogoModules)
-  .map(([path, src]) => {
-    const fileName = path.split("/").pop() ?? "";
-    const label = fileName
-      .replace(/^logo_/, "")
-      .replace(/\.[^.]+$/, "")
-      .replace(/[_-]+/g, " ")
-      .replace(/\b\w/g, (match) => match.toUpperCase());
-
-    return { src, label };
-  })
-  .sort((a, b) => a.label.localeCompare(b.label));
-
 export const clientPageData: ClientPageItem[] = [
   {
-    name: "ADNOC",
+    name: "ADNOC Group of Companies - UAE",
     logo: getClientLogo("adnoc"),
     sector: "Oil & Gas",
     project: "Supply of valves, flanges and instrumentation packages for upstream operations.",
   },
   {
-    name: "NMDC",
-    sector: "Marine & Dredging",
-    project: "Mechanical and electrical equipment for offshore marine construction projects.",
+    name: "TAQA - Abu Dhabi Water and Electricity Authority - UAE",
+    logo: getClientLogo("abudhabiwater"),
+    sector: "Power & Water",
+    project: "Electrical, controls and utility supply support for strategic generation and distribution projects.",
   },
   {
-    name: "Borouge",
-    logo: getClientLogo("lyb"),
-    sector: "Petrochemical",
-    project: "Process equipment and treatment chemicals for polyolefin manufacturing facilities.",
+    name: "ADAC - Abu Dhabi Airport company - UAE",
+    logo: adacLogo,
+    sector: "Aviation",
+    project: "Supply support for airport infrastructure, operations and utility systems.",
   },
   {
-    name: "NPCC",
-    logo: getClientLogo("npcc"),
-    sector: "EPC / Offshore",
-    project: "Pipes, fittings and structural steel for offshore platform fabrication.",
+    name: "ADSB - Abu Dhabi Ship building - UAE",
+    logo: getClientLogo("adsb"),
+    sector: "Marine & Shipbuilding",
+    project: "Marine-grade equipment packages and systems support for shipbuilding programs.",
   },
   {
-    name: "DEWA",
+    name: "KIZAD PORT - UAE",
+    logo: getClientLogo("abudhabiports"),
+    sector: "Ports & Logistics",
+    project: "Port infrastructure equipment and mechanical systems supply for terminal operations.",
+  },
+  {
+    name: "Emirates Steel - UAE",
+    logo: getClientLogo("emiratessteel"),
+    sector: "Steel & Manufacturing",
+    project: "Industrial process, utilities and plant support equipment supply.",
+  },
+  {
+    name: "DEWA - Dubai Electricity and Water authority - UAE",
     logo: getClientLogo("dewa"),
     sector: "Power & Water",
     project: "Switchgear, transformers and control systems for utility infrastructure.",
   },
   {
-    name: "EWEC",
-    sector: "Power Generation",
-    project: "Electrical and instrumentation supply for power and water generation assets.",
+    name: "ENEC - Emirates Nuclear Energy Company - UAE",
+    logo: enecLogo,
+    sector: "Nuclear Energy",
+    project: "Critical industrial supply support for nuclear energy infrastructure projects.",
   },
   {
-    name: "G42",
-    sector: "Technology & AI",
-    project: "Specialised industrial equipment for data-centre and infrastructure projects.",
+    name: "Borouge - UAE",
+    logo: getClientLogo("lyb"),
+    sector: "Petrochemical",
+    project: "Process equipment and treatment chemicals for polyolefin manufacturing facilities.",
   },
   {
-    name: "DP World",
-    logo: getClientLogo("dpworld"),
-    sector: "Ports & Logistics",
-    project: "Marine-grade hardware, lubricants and spares for port operations.",
-  },
-  {
-    name: "Fertiglobe",
+    name: "Fertiglobe - UAE",
     logo: getClientLogo("fertiglobe"),
     sector: "Fertilizers",
     project: "Process valves, pumps and chemicals for ammonia and urea production.",
   },
   {
-    name: "Abu Dhabi Ports",
-    logo: getClientLogo("abudhabiports"),
-    sector: "Maritime",
-    project: "Mechanical and safety equipment for port infrastructure expansion.",
-  },
-  {
-    name: "Oman Drydock",
+    name: "Omand DryDock - Oman",
+    logo: omanDrydockLogo,
     sector: "Ship Repair",
     project: "Marine spares, valves and treatment chemicals for VLCC servicing.",
   },
   {
-    name: "GMS",
-    sector: "Offshore Services",
-    project: "Specialty pumps, switchgear and lifting equipment for self-elevating vessels.",
+    name: "PARCo - Pak Arab Refinery - Pakistan",
+    logo: parcoLogo,
+    sector: "Refining",
+    project: "Mechanical, process and utility supply support for refinery operations.",
+  },
+  {
+    name: "ARL - Attack Refinery Limited - Pakistan",
+    logo: arlLogo,
+    sector: "Refining",
+    project: "Supply support for process units, rotating equipment and maintenance programs.",
+  },
+  {
+    name: "Orient Petroleum Limited - Pakistan",
+    logo: orientLogo,
+    sector: "Oil & Gas",
+    project: "Industrial equipment and project supply support for upstream and downstream operations.",
   },
 ];
+
+export const allClientLogos = clientPageData
+  .filter((client) => Boolean(client.logo))
+  .map((client) => ({ src: client.logo as string, label: client.name }));

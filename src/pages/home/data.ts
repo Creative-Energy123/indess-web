@@ -1,9 +1,9 @@
-import imgMechanical from "@/assets/cin-mechanical.jpg";
+import imgMechanical from "@/assets/MECHANICAL.png";
 import imgElectrical from "@/assets/cin-electrical.jpg";
-import imgInstrumentation from "@/assets/cin-instrumentation.jpg";
-import imgChemicals from "@/assets/cin-chemicals.jpg";
+import imgInstrumentation from "@/assets/instumentation and control.png";
+import imgChemicals from "@/assets/Chemical Industry.jpg";
 import imgProcess from "@/assets/cin-process.jpg";
-import imgOilgas from "@/assets/industry-oilgas.jpg";
+import imgOilgas from "@/assets/oil and gas.jpg";
 import imgPetro from "@/assets/industry-petrochemical.jpg";
 import imgPower from "@/assets/industry-power.jpg";
 import imgShip from "@/assets/industry-shipping.jpg";
@@ -22,6 +22,11 @@ const clientLogoModules = import.meta.glob("../../assets/clients/logo_*.png", {
   import: "default",
 }) as Record<string, string>;
 
+const brandLogoModules = import.meta.glob("../../assets/brands/*.{png,jpg,jpeg,jfif,webp,avif}", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
 const clientLogoBySlug = Object.fromEntries(
   Object.entries(clientLogoModules).map(([path, src]) => {
     const fileName = path.split("/").pop() ?? "";
@@ -31,6 +36,16 @@ const clientLogoBySlug = Object.fromEntries(
 ) as Record<string, string>;
 
 const getClientLogo = (slug: string): string | undefined => clientLogoBySlug[slug.toLowerCase()];
+
+const allBrandLogoItems = Object.entries(brandLogoModules)
+  .map(([path, src]) => {
+    const fileName = path.split("/").pop() ?? "";
+    const slug = fileName.replace(/^logo_/, "").replace(/\.[^.]+$/, "").toLowerCase();
+    const label = slug.replace(/[_-]+/g, " ").replace(/\b\w/g, (match) => match.toUpperCase());
+
+    return { slug, label, src };
+  })
+  .sort((a, b) => a.label.localeCompare(b.label));
 
 export const industries: IndustryItem[] = [
   { n: "01", title: "Oil & Gas", img: imgOilgas, copy: "Upstream, midstream and downstream operations across the GCC." },
@@ -56,11 +71,11 @@ export const expertiseItems: ExpertiseItem[] = [
 ];
 
 export const products: ProductItem[] = [
-  { n: "P/01", slug: "mechanical-equipment", title: "Mechanical Equipment", img: imgMechanical, copy: "Pumps, valves, compressors, flanges, fittings and precision-engineered piping systems for high-pressure service.", items: ["Centrifugal & Positive Displacement Pumps", "Ball, Gate, Globe & Check Valves", "Compressors & Heat Exchangers", "Flanges, Fittings & Gaskets"] },
-  { n: "P/02", slug: "electrical-systems", title: "Electrical Systems", img: imgElectrical, copy: "Switchgear, transformers, motors, drives and complete LV/MV electrical distribution infrastructure.", items: ["LV/MV Switchgear & Panels", "Transformers & Reactors", "Motors, Drives & Soft Starters", "Cables, Terminations & Accessories"] },
-  { n: "P/03", slug: "instrumentation-control", title: "Instrumentation & Control", img: imgInstrumentation, copy: "Field instruments, control systems and process automation for plant-wide visibility and safety.", items: ["Pressure, Flow & Level Transmitters", "PLC, DCS & SCADA Systems", "Control Valves & Actuators", "Safety & Fire-Gas Detection"] },
-  { n: "P/04", slug: "process-equipment", title: "Process Equipment", img: imgProcess, copy: "Heat exchangers, separators, vessels and skid-mounted process packages built to specification.", items: ["Pressure Vessels & Separators", "Heat Exchangers & Coolers", "Filtration & Treatment Skids", "Custom-Engineered Packages"] },
-  { n: "P/05", slug: "industrial-chemicals", title: "Industrial Chemicals", img: imgChemicals, copy: "Lubricants, treatment chemicals and specialty fluids supporting refineries, pipelines and offshore operations.", items: ["Industrial Lubricants & Greases", "Drilling & Completion Fluids", "Corrosion & Scale Inhibitors", "Cleaning & Treatment Chemicals"] },
+  { n: "P/01", slug: "valves", title: "Mechanical Equipment", img: imgMechanical, copy: "Pumps, valves, compressors, flanges, fittings and precision-engineered piping systems for high-pressure service.", items: ["Centrifugal & Positive Displacement Pumps", "Ball, Gate, Globe & Check Valves", "Compressors & Heat Exchangers", "Flanges, Fittings & Gaskets"] },
+  { n: "P/02", slug: "switchgear", title: "Electrical Systems", img: imgElectrical, copy: "Switchgear, transformers, motors, drives and complete LV/MV electrical distribution infrastructure.", items: ["LV/MV Switchgear & Panels", "Transformers & Reactors", "Motors, Drives & Soft Starters", "Cables, Terminations & Accessories"] },
+  { n: "P/03", slug: "transmitters", title: "Instrumentation & Control", img: imgInstrumentation, copy: "Field instruments, control systems and process automation for plant-wide visibility and safety.", items: ["Pressure, Flow & Level Transmitters", "PLC, DCS & SCADA Systems", "Control Valves & Actuators", "Safety & Fire-Gas Detection"] },
+  { n: "P/04", slug: "heat-exchangers", title: "Process Equipment", img: imgProcess, copy: "Heat exchangers, separators, vessels and skid-mounted process packages built to specification.", items: ["Pressure Vessels & Separators", "Heat Exchangers & Coolers", "Filtration & Treatment Skids", "Custom-Engineered Packages"] },
+  { n: "P/05", slug: "treatment-chemicals", title: "Industrial Chemicals", img: imgChemicals, copy: "Lubricants, treatment chemicals and specialty fluids supporting refineries, pipelines and offshore operations.", items: ["Industrial Lubricants & Greases", "Drilling & Completion Fluids", "Corrosion & Scale Inhibitors", "Cleaning & Treatment Chemicals"] },
 ];
 
 export const partners: PartnerItem[] = [
@@ -72,20 +87,7 @@ export const partners: PartnerItem[] = [
   { name: "Cangzhou Hongding", role: "Pipes & Fittings - China", logo: imgPartnerCangzhou },
 ];
 
-export const brands: BrandItem[] = [
-  { name: "GE" },
-  { name: "Mitsubishi", logo: getClientLogo("mitsubishi") },
-  { name: "Schneider" },
-  { name: "Honeywell" },
-  { name: "Omron" },
-  { name: "ABB", logo: getClientLogo("abb") },
-  { name: "Fanuc" },
-  { name: "Eaton" },
-  { name: "Bosch", logo: getClientLogo("bosch") },
-  { name: "Lenze" },
-  { name: "Banner" },
-  { name: "Siemens", logo: getClientLogo("siemensenergy") },
-];
+export const brands: BrandItem[] = allBrandLogoItems.map((item) => ({ name: item.label, logo: item.src }));
 
 export const clients: ClientItem[] = [
   { name: "NMDC" },

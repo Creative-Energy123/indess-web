@@ -27,10 +27,16 @@ export default function ClientsPage() {
             <p className="text-[10px] uppercase tracking-editorial text-gold">Selected Clients</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-px border border-border-soft bg-border-soft sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid grid-cols-2 border-l border-t border-border-soft bg-white md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {allClientLogos.map((logo) => (
-              <div key={logo.label} className="group flex aspect-[16/10] items-center justify-center bg-white p-6 transition-colors hover:bg-background-subtle">
-                <img src={logo.src} alt={logo.label} className="max-h-24 w-auto object-contain opacity-80 transition-opacity group-hover:opacity-100" />
+              <div key={logo.label} className="group flex aspect-[3/2] items-center justify-center border-b border-r border-border-soft p-6 transition-colors hover:bg-background-subtle">
+                <div className="flex h-20 w-40 items-center justify-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.label}
+                    className="h-full w-full object-contain opacity-85 transition-opacity group-hover:opacity-100"
+                  />
+                </div>
               </div>
             ))}
           </div>

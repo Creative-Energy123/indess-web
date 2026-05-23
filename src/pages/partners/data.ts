@@ -4,6 +4,7 @@ import logoWooju from "@/assets/partners/logo_wooju.png";
 import logoHs from "@/assets/partners/logo_hs.png";
 import logoHorizon from "@/assets/partners/logo_horizon.png";
 import logoCangzhou from "@/assets/partners/logo_Cangzhou.png";
+import logoDifiniti from "@/assets/partners/difiniti.jpeg";
 
 import type { PartnerPageItem } from "./types";
 
@@ -90,6 +91,20 @@ export const partnerPageData: PartnerPageItem[] = [
       "Pipe fittings & flanges",
       "API 5L / ASTM standards",
       "Pipeline & structural use",
+    ],
+  },
+  {
+    code: "PT/07",
+    name: "DFINITI Technologies",
+    country: "Singapore",
+    logo: logoDifiniti,
+    summary:
+      "Singapore-headquartered process-heating specialist designing and manufacturing industrial heating systems for oil & gas, petrochemical, refinery, power and aerospace applications, supported by an ATIGA-licensed Malaysian LMW facility.",
+    highlights: [
+      "Electric heating systems & space heaters",
+      "Vaporisers & electric steam generation",
+      "Bath heating systems & hot water calorifiers",
+      "Fired/hot oil, air duct & skid package heaters",
     ],
   },
 ];
