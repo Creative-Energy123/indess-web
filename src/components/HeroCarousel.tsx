@@ -7,6 +7,7 @@ import hero from "@/assets/cin-hero.jpg";
 import imgMechanical from "@/assets/cin-mechanical.jpg";
 import imgOilgas from "@/assets/industry-oilgas.jpg";
 import imgHse from "@/assets/hse-hero.jpg";
+import adnocLogo from "@/assets/clients/logo_adnoc.png";
 
 type Slide = {
   eyebrow: string;
@@ -14,10 +15,25 @@ type Slide = {
   title: ReactNode;
   copy: string;
   image: string;
+  bgLogo?: string;
   cta: { label: string; to: string };
 };
 
 const SLIDES: Slide[] = [
+  {
+    eyebrow: "ADNOC Pre-Qualified Vendor",
+    volume: "Chapter 0",
+    title: (
+      <>
+        Proud Pre-Qualified
+        <br />
+        Supplier to ADNOC
+      </>
+    ),
+    copy: "We are proud to be a pre-qualified supplier to ADNOC, supporting one of the world's leading energy companies with reliable industrial solutions, technical expertise, and a commitment to quality, safety, and operational excellence.",
+    image: adnocLogo,
+    cta: { label: "View Company Profile", to: "/company" },
+  },
   {
     eyebrow: "Industrial Energy Supply",
     volume: "Chapter I",
@@ -80,7 +96,7 @@ const SLIDES: Slide[] = [
   },
 ];
 
-const AUTO_MS = 2000;
+const AUTO_MS = 4000;
 
 export default function HeroCarousel() {
   const [active, setActive] = useState(0);
@@ -145,6 +161,14 @@ export default function HeroCarousel() {
               width={1920}
               height={1080}
             />
+            {slide.bgLogo && (
+              <img
+                src={slide.bgLogo}
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[34vh] w-auto -translate-x-1/2 -translate-y-1/2 object-contain opacity-20"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/60 to-primary-dark/25" />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/55 to-transparent" />
           </div>

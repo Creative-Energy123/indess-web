@@ -9,6 +9,8 @@ import CatalogCategoryPage from "@/pages/catalog/category";
 import HseServicesPage from "@/pages/hse-services";
 import PartnersPage from "@/pages/partners";
 import ClientsPage from "@/pages/clients";
+import BrandsPage from "@/pages/brands";
+import CareerPage from "@/pages/career";
 import ProjectsPage from "@/pages/projects";
 import NotFoundPage from "@/pages/not-found";
 import { Route, Routes } from "react-router-dom";
@@ -28,6 +30,8 @@ export default function App() {
           <Route path="/catalog/:slug" element={<CatalogCategoryPage />} />
           <Route path="/partners" element={<PartnersPage />} />
           <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/brands" element={<BrandsPage />} />
+          <Route path="/career" element={<CareerPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

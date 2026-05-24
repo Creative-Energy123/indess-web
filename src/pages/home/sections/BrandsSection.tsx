@@ -1,9 +1,13 @@
 import DisplayHeading from "@/components/DisplayHeading";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import SectionLabel from "@/components/SectionLabel";
 import SectionScaffold from "@/components/layout/SectionScaffold";
 import { brands } from "@/pages/home/data";
 
 export default function BrandsSection() {
+  const featuredBrands = brands.slice(0, 12);
+
   return (
     <SectionScaffold id="brands" className="section-space-lg bg-background-subtle">
       <div className="grid lg:grid-cols-12 gap-12 mb-20">
@@ -20,7 +24,7 @@ export default function BrandsSection() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t border-l border-border-soft bg-white">
-        {brands.map((brand, index) => (
+        {featuredBrands.map((brand, index) => (
           <div key={brand.name} className="border-r border-b border-border-soft aspect-[3/2] flex items-center justify-center group hover:bg-background-subtle transition-colors p-6">
             <div className="text-center flex flex-col items-center gap-2">
               {brand.logo ? (
@@ -32,6 +36,12 @@ export default function BrandsSection() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-10 text-center">
+        <Link to="/brands" className="inline-flex items-center gap-2 border-b border-secondary pb-2 text-[11px] uppercase tracking-editorial text-primary transition-colors hover:text-gold">
+          View All Brands <ArrowUpRight size={14} />
+        </Link>
       </div>
     </SectionScaffold>
   );

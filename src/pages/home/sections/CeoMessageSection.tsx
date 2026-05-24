@@ -10,7 +10,7 @@ export default function CeoMessageSection() {
           <div className="mb-10 border-b border-border-soft pb-8">
             <SectionLabel n="02" label="A Message From CEO" />
             <div className="mt-6">
-              <p className="font-display-light text-4xl leading-[0.95] text-foreground md:text-5xl">Muhammad Sajjad</p>
+              <p className="font-display-light text-4xl leading-[0.95] text-foreground md:text-5xl">M.S AKRAM</p>
               <p className="mt-3 text-[12px] uppercase tracking-editorial text-gold">Chief Executive Officer</p>
             </div>
           </div>

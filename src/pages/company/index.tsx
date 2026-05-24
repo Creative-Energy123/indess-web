@@ -115,7 +115,7 @@ export default function CompanyPage() {
             <Reveal className="border-b border-border-soft pb-8 lg:col-span-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
               <SectionLabel n="02" label="A Message From CEO" />
               <div className="mt-8">
-                <p className="font-display-light text-4xl leading-[0.95] text-foreground md:text-5xl">Muhammad Sajjad</p>
+                <p className="font-display-light text-4xl leading-[0.95] text-foreground md:text-5xl">M.S AKRAM</p>
                 <p className="mt-3 text-[12px] uppercase tracking-editorial text-gold">Chief Executive Officer</p>
               </div>
             </Reveal>

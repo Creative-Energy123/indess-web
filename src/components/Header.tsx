@@ -24,6 +24,7 @@ type Section = {
 const ABOUT_LINKS: Section[] = [
 	{ label: "Company", route: "/company" },
 	{ label: "Clients", route: "/clients" },
+	{ label: "Brands", route: "/brands" },
 	{ label: "Career", route: "/career" },
 ];
 

@@ -3,20 +3,48 @@ import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import Layout from "@/components/layout/Layout";
 import hero from "@/assets/hero-platform.jpg";
-import imgOilgas from "@/assets/industry-oilgas.jpg";
-import imgPetro from "@/assets/industry-petrochemical.jpg";
-import imgPower from "@/assets/industry-power.jpg";
-import imgShip from "@/assets/industry-shipping.jpg";
-import imgMechanical from "@/assets/cin-mechanical.jpg";
-import imgElectrical from "@/assets/cin-electrical.jpg";
+import imgCentrifugalCompressor from "@/assets/projects/centrifugal compressors.png";
+import imgCentrifugalCompressor2 from "@/assets/projects/centrigual compresso 2.jpg";
+import imgCentrifugalAirCompressor from "@/assets/projects/CENTRIFUGAL-AIR-COMPRESSORS.webp";
+import imgCentrifugalAirCompressor2 from "@/assets/projects/FS-Elliott-P700 Centrifugal Compressor.png";
 
 const projects = [
-  { n: "PR/01", title: "Offshore Valve Supply Package", sector: "Oil & Gas - UAE", img: imgOilgas, copy: "Multi-stage supply of high-pressure ball and gate valves for offshore platform retrofit." },
-  { n: "PR/02", title: "Refinery Instrumentation Upgrade", sector: "Petrochemical - Oman", img: imgPetro, copy: "Pressure, flow and temperature transmitters with HART communicator integration." },
-  { n: "PR/03", title: "LV/MV Switchgear Replacement", sector: "Power Generation - KSA", img: imgPower, copy: "Switchgear, transformers and protection relay supply for substation upgrade." },
-  { n: "PR/04", title: "VLCC Spares Continuity Program", sector: "Marine - Qatar", img: imgShip, copy: "Two-year spares continuity contract for crude carrier fleet maintenance." },
-  { n: "PR/05", title: "Centrifugal Pump Overhaul Kits", sector: "Oil & Gas - Kuwait", img: imgMechanical, copy: "Sourcing and kitting of OEM-spec mechanical seals, bearings and impellers." },
-  { n: "PR/06", title: "Motor & Drive Package", sector: "Industrial - Bahrain", img: imgElectrical, copy: "MV motors with VFDs and soft-starters for process plant expansion." },
+  {
+    n: "PR/01",
+    title: "Centrifugal Gas Compressor",
+    scope: "Oil & Gas",
+    client: "Southwest Institute of Chemical Co., Ltd.",
+    year: "2025",
+    img: imgCentrifugalCompressor,
+    description: "CO2 Centrifugal Compressor Unit, 7898 Nm3/hr, 3.8 MPa(G)",
+  },
+  {
+    n: "PR/02",
+    title: "Centrifugal Gas Compressor",
+    scope: "Oil & Gas",
+    client: "China Pingmei Shenma Energy and Chemical Group Co., Ltd.",
+    year: "2025",
+    img: imgCentrifugalCompressor2,
+    description: "Ammonia Gas Mixture Centrifugal Compressor Unit, 20620 Nm3/hr, 0.417 MPa",
+  },
+  {
+    n: "PR/03",
+    title: "Centrifugal Air Compressor",
+    scope: "Oil & Gas",
+    client: "Lihuayi Weiyuan Chemical Co., Ltd.",
+    year: "2025",
+    img: imgCentrifugalAirCompressor,
+    description: "Air Centrifugal Compressor Unit, 86000 Nm3/hr, 0.85 MPa(A)",
+  },
+  {
+    n: "PR/04",
+    title: "Centrifugal Air Compressor",
+    scope: "Oil & Gas",
+    client: "SINOPEC Materials & Equipment (Dalian) Co., Ltd.",
+    year: "2025",
+    img: imgCentrifugalAirCompressor2,
+    description: "Air Centrifugal Compressor Unit, 200 Nm3/min, 0.75 MPa(G)",
+  },
 ];
 
 const ProjectsPage = () => {
@@ -62,9 +90,11 @@ const ProjectsPage = () => {
                     <span className="text-gold text-[11px] uppercase tracking-editorial">{project.n}</span>
                     <ArrowUpRight size={16} className="text-foreground/30 transition-colors group-hover:text-primary" />
                   </div>
-                  <h3 className="font-display-light mb-2 text-2xl leading-tight">{project.title}</h3>
-                  <p className="mb-4 text-[11px] uppercase tracking-editorial text-foreground/55">{project.sector}</p>
-                  <p className="text-sm font-light leading-relaxed text-foreground/70">{project.copy}</p>
+                  <h3 className="font-display-light mb-4 text-2xl leading-tight">{project.title}</h3>
+                  <p className="mb-2 text-[11px] uppercase tracking-editorial text-foreground/55">{project.scope}</p>
+                  <p className="mb-2 text-[11px] uppercase tracking-editorial text-foreground/55">{project.client}</p>
+                  <p className="mb-4 text-[11px] uppercase tracking-editorial text-foreground/55">{project.year}</p>
+                  <p className="text-sm font-light leading-relaxed text-foreground/70">{project.description}</p>
                 </div>
               </Reveal>
             ))}

@@ -3,9 +3,12 @@ import type { ClientPageItem } from "./types";
 import omanDrydockLogo from "@/assets/clients/OMAN-300x180.jpeg";
 import adacLogo from "@/assets/clients/abudhabi_airport_logo.png";
 import arlLogo from "@/assets/clients/ARL.png";
+import borougeLogo from "@/assets/clients/borouge.jfif";
 import enecLogo from "@/assets/clients/emirates_logo.png";
+import kizadLogo from "@/assets/clients/kizad.png";
 import orientLogo from "@/assets/clients/orient.jfif";
 import parcoLogo from "@/assets/clients/PARCO.png";
+import taqaLogo from "@/assets/clients/taqa.png";
 
 const allClientLogoModules = import.meta.glob("../../assets/clients/logo_*.png", {
   eager: true,
@@ -31,7 +34,7 @@ export const clientPageData: ClientPageItem[] = [
   },
   {
     name: "TAQA - Abu Dhabi Water and Electricity Authority - UAE",
-    logo: getClientLogo("abudhabiwater"),
+    logo: taqaLogo,
     sector: "Power & Water",
     project: "Electrical, controls and utility supply support for strategic generation and distribution projects.",
   },
@@ -49,7 +52,7 @@ export const clientPageData: ClientPageItem[] = [
   },
   {
     name: "KIZAD PORT - UAE",
-    logo: getClientLogo("abudhabiports"),
+    logo: kizadLogo,
     sector: "Ports & Logistics",
     project: "Port infrastructure equipment and mechanical systems supply for terminal operations.",
   },
@@ -73,7 +76,7 @@ export const clientPageData: ClientPageItem[] = [
   },
   {
     name: "Borouge - UAE",
-    logo: getClientLogo("lyb"),
+    logo: borougeLogo,
     sector: "Petrochemical",
     project: "Process equipment and treatment chemicals for polyolefin manufacturing facilities.",
   },

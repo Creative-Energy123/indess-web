@@ -1,25 +1,25 @@
 import cables from "../../assets/catalog/cables.jpg";
-import cleaningChemicals from "../../assets/catalog/cleaning-chemicals.jpg";
+import cleaningChemicals from "../../assets/catalog/Industrial Chemicals/cleaning chemicals.png";
 import compressors from "../../assets/catalog/compressors.jpg";
 import controlSystems from "../../assets/catalog/control-systems.jpg";
 import controlValves from "../../assets/catalog/control-valves.jpg";
-import deck from "../../assets/catalog/deck.jpg";
-import drillingFluids from "../../assets/catalog/drilling-fluids.jpg";
-import engineRoom from "../../assets/catalog/engine-room.jpg";
+import deck from "../../assets/catalog/Marine/Deck.jpg";
+import drillingFluids from "../../assets/catalog/Industrial Chemicals/Drilling Fluids.png";
+import engineRoom from "../../assets/catalog/Marine/Engine room.png";
 import heatExchangers from "../../assets/catalog/heat-exchangers.jpg";
 import lightingUps from "../../assets/catalog/lighting-ups.jpg";
-import lubricants from "../../assets/catalog/lubricants.jpg";
+import lubricants from "../../assets/catalog/Industrial Chemicals/Lubricants.png";
 import motors from "../../assets/catalog/motors.jpg";
 import pipes from "../../assets/catalog/pipes.jpg";
 import pumps from "../../assets/catalog/pumps.jpg";
 import safetyDetection from "../../assets/catalog/safety-detection.jpg";
-import safetyNavigation from "../../assets/catalog/safety-navigation.jpg";
+import safetyNavigation from "../../assets/catalog/Marine/Safety & Navigation.png";
 import switchgear from "../../assets/catalog/switchgear.jpg";
 import transformers from "../../assets/catalog/transformers.jpg";
 import transmitters from "../../assets/catalog/transmitters.jpg";
-import treatmentChemicals from "../../assets/catalog/treatment-chemicals.jpg";
+import treatmentChemicals from "../../assets/catalog/Industrial Chemicals/Treatment Chemicals .png";
 import valves from "../../assets/catalog/valves.jpg";
-import vlcc from "../../assets/catalog/vlcc.jpg";
+import vlcc from "../../assets/catalog/Marine/VLCC .png";
 
 import type { CatalogCategory } from "./types";
 
