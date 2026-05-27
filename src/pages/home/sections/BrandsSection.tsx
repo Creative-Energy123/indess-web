@@ -28,7 +28,7 @@ export default function BrandsSection() {
           <div key={brand.name} className="border-r border-b border-border-soft aspect-[3/2] flex items-center justify-center group hover:bg-background-subtle transition-colors p-6">
             <div className="text-center flex flex-col items-center gap-2">
               {brand.logo ? (
-                <img src={brand.logo} alt={brand.name} className="max-h-12 w-auto object-contain" />
+                <img src={brand.logo} alt={brand.name} className="max-h-24 w-auto object-contain" />
               ) : (
                 <div className="font-display-light text-2xl md:text-3xl text-foreground/85 group-hover:text-primary transition-colors">{brand.name}</div>
               )}

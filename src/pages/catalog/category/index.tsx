@@ -163,7 +163,7 @@ export default function CatalogCategoryPage() {
             <span className="ml-auto text-[11px] uppercase tracking-editorial text-foreground/60">{data.items.length} Types</span>
           </div>
 
-          <div className="grid gap-px bg-border-soft md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-px bg-white md:grid-cols-2 lg:grid-cols-3">
             {data.items.map((item, index) => (
               <Reveal key={item.name}>
                 <article className="group flex h-full flex-col bg-white transition-colors hover:bg-background-subtle">

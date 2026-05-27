@@ -30,12 +30,15 @@ export default function ClientsPage() {
           <div className="grid grid-cols-2 border-l border-t border-border-soft bg-white md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {allClientLogos.map((logo) => (
               <div key={logo.label} className="group flex aspect-[3/2] items-center justify-center border-b border-r border-border-soft p-6 transition-colors hover:bg-background-subtle">
-                <div className="flex h-20 w-40 items-center justify-center">
+                <div className="flex flex-col items-center justify-center gap-3 text-center">
+                  <div className="flex h-20 w-40 items-center justify-center">
                   <img
                     src={logo.src}
                     alt={logo.label}
                     className="h-full w-full object-contain opacity-85 transition-opacity group-hover:opacity-100"
                   />
+                  </div>
+                  <p className="text-sm font-semibold leading-tight text-foreground/90">{logo.label}</p>
                 </div>
               </div>
             ))}

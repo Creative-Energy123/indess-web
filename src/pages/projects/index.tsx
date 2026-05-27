@@ -3,49 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import Layout from "@/components/layout/Layout";
 import hero from "@/assets/hero-platform.jpg";
-import imgCentrifugalCompressor from "@/assets/projects/centrifugal compressors.png";
-import imgCentrifugalCompressor2 from "@/assets/projects/centrigual compresso 2.jpg";
-import imgCentrifugalAirCompressor from "@/assets/projects/CENTRIFUGAL-AIR-COMPRESSORS.webp";
-import imgCentrifugalAirCompressor2 from "@/assets/projects/FS-Elliott-P700 Centrifugal Compressor.png";
-
-const projects = [
-  {
-    n: "PR/01",
-    title: "Centrifugal Gas Compressor",
-    scope: "Oil & Gas",
-    client: "Southwest Institute of Chemical Co., Ltd.",
-    year: "2025",
-    img: imgCentrifugalCompressor,
-    description: "CO2 Centrifugal Compressor Unit, 7898 Nm3/hr, 3.8 MPa(G)",
-  },
-  {
-    n: "PR/02",
-    title: "Centrifugal Gas Compressor",
-    scope: "Oil & Gas",
-    client: "China Pingmei Shenma Energy and Chemical Group Co., Ltd.",
-    year: "2025",
-    img: imgCentrifugalCompressor2,
-    description: "Ammonia Gas Mixture Centrifugal Compressor Unit, 20620 Nm3/hr, 0.417 MPa",
-  },
-  {
-    n: "PR/03",
-    title: "Centrifugal Air Compressor",
-    scope: "Oil & Gas",
-    client: "Lihuayi Weiyuan Chemical Co., Ltd.",
-    year: "2025",
-    img: imgCentrifugalAirCompressor,
-    description: "Air Centrifugal Compressor Unit, 86000 Nm3/hr, 0.85 MPa(A)",
-  },
-  {
-    n: "PR/04",
-    title: "Centrifugal Air Compressor",
-    scope: "Oil & Gas",
-    client: "SINOPEC Materials & Equipment (Dalian) Co., Ltd.",
-    year: "2025",
-    img: imgCentrifugalAirCompressor2,
-    description: "Air Centrifugal Compressor Unit, 200 Nm3/min, 0.75 MPa(G)",
-  },
-];
+import { projects } from "./data";
 
 const ProjectsPage = () => {
   return (
@@ -72,7 +30,7 @@ const ProjectsPage = () => {
 
       <section className="section-space-lg bg-white">
         <div className="page-shell">
-          <div className="grid gap-px border border-border-soft bg-border-soft md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-px border border-border-soft bg-white md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <Reveal key={project.n} delay={index * 70} className="group block bg-white">
                 <div className="aspect-[4/3] overflow-hidden">
@@ -91,10 +49,10 @@ const ProjectsPage = () => {
                     <ArrowUpRight size={16} className="text-foreground/30 transition-colors group-hover:text-primary" />
                   </div>
                   <h3 className="font-display-light mb-4 text-2xl leading-tight">{project.title}</h3>
-                  <p className="mb-2 text-[11px] uppercase tracking-editorial text-foreground/55">{project.scope}</p>
+                  {project.scope && <p className="mb-2 text-[11px] uppercase tracking-editorial text-foreground/55">{project.scope}</p>}
                   <p className="mb-2 text-[11px] uppercase tracking-editorial text-foreground/55">{project.client}</p>
                   <p className="mb-4 text-[11px] uppercase tracking-editorial text-foreground/55">{project.year}</p>
-                  <p className="text-sm font-light leading-relaxed text-foreground/70">{project.description}</p>
+                  <p className="text-sm font-semibold leading-relaxed text-foreground/70">{project.description}</p>
                 </div>
               </Reveal>
             ))}

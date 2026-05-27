@@ -25,12 +25,12 @@ const SLIDES: Slide[] = [
     volume: "Chapter 0",
     title: (
       <>
-        Proud Pre-Qualified
+        A Trusted Supplier
         <br />
-        Supplier to ADNOC
+        to ADNOC
       </>
     ),
-    copy: "We are proud to be a pre-qualified supplier to ADNOC, supporting one of the world's leading energy companies with reliable industrial solutions, technical expertise, and a commitment to quality, safety, and operational excellence.",
+    copy: "INDESS UAE is proud to be a pre-qualified supplier to ADNOC. Our qualification reflects our commitment to quality, compliance, and reliable service delivery for critical oil & gas, petrochemical, and industrial applications across the region.",
     image: adnocLogo,
     cta: { label: "View Company Profile", to: "/company" },
   },
@@ -96,7 +96,7 @@ const SLIDES: Slide[] = [
   },
 ];
 
-const AUTO_MS = 4000;
+const AUTO_MS = 7000;
 
 export default function HeroCarousel() {
   const [active, setActive] = useState(0);

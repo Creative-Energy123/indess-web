@@ -31,7 +31,7 @@ export default function BrandsPage() {
             {brands.map((brand) => (
               <div key={brand.name} className="group flex aspect-[3/2] items-center justify-center border-b border-r border-border-soft p-6 transition-colors hover:bg-background-subtle">
                 {brand.logo ? (
-                  <img src={brand.logo} alt={brand.name} className="max-h-12 w-auto object-contain opacity-85 transition-opacity group-hover:opacity-100" />
+                  <img src={brand.logo} alt={brand.name} className="max-h-24 w-auto object-contain opacity-85 transition-opacity group-hover:opacity-100" />
                 ) : (
                   <div className="text-center font-display-light text-xl text-foreground/85">{brand.name}</div>
                 )}

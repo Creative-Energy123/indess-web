@@ -114,7 +114,7 @@ export default function CatalogPage() {
                   <h2 className="font-display text-4xl leading-[0.95] text-primary-dark md:text-5xl">{category.label}</h2>
                 </header>
 
-                <div className="grid gap-px bg-border-soft md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-px bg-white md:grid-cols-2 lg:grid-cols-3">
                   {category.cards.map((card) => (
                     <article key={card.id} className="flex h-full flex-col bg-white">
                       <div className="aspect-[5/4] overflow-hidden">
