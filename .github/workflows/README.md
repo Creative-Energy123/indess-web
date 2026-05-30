@@ -37,13 +37,9 @@ The workflow triggers on:
 
 ### Deployment Process
 
-1. **Frontend Deployment**: 
+1. **Frontend Deployment**:
    - Builds the Vite application
    - Deploys the `dist/` folder to `public_html/` on GoDaddy
-
-2. **Backend Deployment**:
-   - Deploys backend code to a separate `backend/` directory
-   - Excludes node_modules and git files
 
 ### Customization
 
@@ -54,10 +50,9 @@ You may need to adjust:
 
 ## Important Notes
 
-- Make sure your GoDaddy hosting plan supports Node.js if you're deploying the backend
-- The backend deployment assumes you'll install dependencies on the server
-- Consider using environment variables for backend configuration
-- For production, ensure you have proper `.env` files configured on the server
+- This workflow deploys a static React + Vite site.
+- The project includes `public/.htaccess` so deep links like `/projects` load correctly on Apache hosting.
+- Point your domain to the GoDaddy hosting account (A record to hosting IP) and ensure document root is `public_html`.
 
 ## Manual Deployment
 
