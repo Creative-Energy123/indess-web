@@ -21,6 +21,7 @@ export const partnerPageData: PartnerPageItem[] = [
       "API 6D / API 600 certified",
       "Cryogenic & high-pressure service",
       "Custom-engineered solutions",
+      "Cryogenic & High-Pressure Valves",
     ],
   },
   {
@@ -31,10 +32,12 @@ export const partnerPageData: PartnerPageItem[] = [
     summary:
       "Globally recognised precision-engineering group delivering large-scale mechanical components, moulds and integrated industrial manufacturing solutions.",
     highlights: [
-      "Precision mechanical components",
-      "Industrial moulds & tooling",
+      "Pressure Vessels",
+      "Heat Exchangers",
+      "Compressors",
+      "Precision Mechanical components",
+      "Industrial moulding & tooling",
       "Heavy machinery sub-assemblies",
-      "ISO-certified manufacturing",
     ],
   },
   {
@@ -45,10 +48,13 @@ export const partnerPageData: PartnerPageItem[] = [
     summary:
       "Specialist supplier of gas-handling and packaging systems for industrial gases, chemicals and petrochemical applications.",
     highlights: [
-      "Gas packaging & containment",
-      "High-pressure cylinder systems",
-      "Industrial gas equipment",
-      "Safety-critical assemblies",
+      "Non-Metallic Sheets & Gaskets",
+      "Semi-Metallic Gasket",
+      "Insulation Sets",
+      "Metallic Gasket",
+      "Plastic & Rubber Gaskets",
+      "Gland Packing",
+      "Insulation Textiles",
     ],
   },
   {

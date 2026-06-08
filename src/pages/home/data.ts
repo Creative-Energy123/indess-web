@@ -1,6 +1,6 @@
-import imgMechanical from "@/assets/MECHANICAL.png";
+import imgMechanical from "@/assets/Mechanical.jpg";
 import imgElectrical from "@/assets/cin-electrical.jpg";
-import imgInstrumentation from "@/assets/instumentation and control.png";
+import imgInstrumentation from "@/assets/instrumentation and control.jpg";
 import imgChemicals from "@/assets/Chemical Industry.jpg";
 import imgProcess from "@/assets/cin-process.jpg";
 import imgOilgas from "@/assets/oil and gas.jpg";
@@ -105,9 +105,9 @@ export const clients: ClientItem[] = [
 ];
 
 export const regions: PresenceRegionItem[] = [
-  { region: "Middle East", countries: ["United Arab Emirates", "Oman", "Qatar", "Kuwait", "Bahrain", "Saudi Arabia"] },
-  { region: "Europe", countries: ["United Kingdom", "European Union Countries"] },
-  { region: "Americas", countries: ["United States"] },
-  { region: "Asia Pacific", countries: ["South Korea", "Japan", "Singapore", "China", "Malaysia"] },
-  { region: "Central Asia", countries: ["Kazakhstan", "Turkmenistan", "Uzbekistan"] },
+  { region: "Middle East", countries: ["United Arab Emirates","Saudi Arabia", "Oman", "Qatar", "Kuwait",]},
+  { region: "Europe", countries: ["United Kingdom", "European Union Countries"]},
+  { region: "Americas", countries: ["United States"]},
+  { region: "Asia Pacific", countries: ["China","Japan","South Korea","Malaysia","Singapore",]},
+  { region: "Central Asia", countries: ["Azerbaijan","Uzbekistan", "Kazakhstan", "Turkmenistan"]},
 ];
