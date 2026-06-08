@@ -6,7 +6,6 @@ import imgProject7 from "@/assets/projects/project 7.png";
 import imgProject9 from "@/assets/projects/project 9.jpg";
 import imgProject12 from "@/assets/projects/project 12.webp";
 import imgProject13 from "@/assets/projects/project 13.webp";
-import imgProject14 from "@/assets/projects/project 14.jpg";
 import imgProject16 from "@/assets/projects/project 16.webp";
 
 
