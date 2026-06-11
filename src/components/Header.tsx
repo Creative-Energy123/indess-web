@@ -33,7 +33,6 @@ const MAIN_LINKS: Section[] = [
 	{ label: "HSE Services", route: "/hse-services" },
 	{ label: "Partners", route: "/partners" },
 	{ label: "Projects", route: "/projects" },
-	{ label: "Contact", id: "contact" },
 ];
 
 const TRANSPARENT_HEADER_ROUTES = ["/"] as const;

@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollManager from "@/components/ScrollManager";
-import ContactSection from "@/pages/home/sections/ContactSection";
 import HomePage from "@/pages/home";
 import CompanyPage from "@/pages/company";
 import CatalogPage from "@/pages/catalog/catalog";
@@ -36,8 +35,6 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-
-      <ContactSection />
 
       <Footer />
     </div>

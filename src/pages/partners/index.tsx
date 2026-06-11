@@ -1,5 +1,4 @@
 import { ArrowUpRight, CheckCircle2, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
 
 import Layout from "../../components/layout/Layout";
 import Reveal from "../../components/Reveal";
@@ -69,12 +68,12 @@ export default function PartnersPage() {
           <h3 className="font-display-light mx-auto mb-8 max-w-3xl text-4xl md:text-5xl">
             Building the next chapter of industrial supply - together.
           </h3>
-          <Link
-            to="/#contact"
+          <a
+            href="mailto:sales@indessuae.com"
             className="inline-flex items-center gap-3 bg-primary px-8 py-4 text-[11px] font-medium uppercase tracking-editorial text-white transition-colors hover:bg-primary-dark"
           >
             Contact Our Team <ArrowUpRight size={14} />
-          </Link>
+          </a>
         </div>
       </section>
     </Layout>

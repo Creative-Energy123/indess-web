@@ -32,9 +32,6 @@ export default function Footer() {
               <Link to="/clients" className="block transition-colors hover:text-secondary">
                 Clients
               </Link>
-              <Link to="/#contact" className="block transition-colors hover:text-secondary">
-                Contact
-              </Link>
             </nav>
           </div>
 

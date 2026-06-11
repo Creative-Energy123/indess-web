@@ -1,19 +1,19 @@
-import imgValves from "../../../assets/catalog/valves.jpg";
-import vBall from "../../../assets/catalog/valves/ball.jpg";
-import vButterfly from "../../../assets/catalog/valves/butterfly.jpg";
-import vBypass from "../../../assets/catalog/valves/bypass.jpg";
-import vCheck from "../../../assets/catalog/valves/check.jpg";
-import vControl from "../../../assets/catalog/valves/control.jpg";
-import vDiaphragm from "../../../assets/catalog/valves/diaphragm.jpg";
-import vGate from "../../../assets/catalog/valves/gate.jpg";
-import vGlobe from "../../../assets/catalog/valves/globe.jpg";
-import vNeedle from "../../../assets/catalog/valves/needle.jpg";
-import vPinch from "../../../assets/catalog/valves/pinch.jpg";
-import vPlug from "../../../assets/catalog/valves/plug.jpg";
-import vRelief from "../../../assets/catalog/valves/pressure-relief.jpg";
-import vSafety from "../../../assets/catalog/valves/safety.jpg";
-import vSlide from "../../../assets/catalog/valves/slide.jpg";
-import vSolenoid from "../../../assets/catalog/valves/solenoid.jpg";
+import imgValves from "../../../assets/catalog/Mechanical Equipments/Valves.jpg";
+import vBall from "../../../assets/catalog/Mechanical Equipments/Valves/Ball Valves.jpg";
+import vButterfly from "../../../assets/catalog/Mechanical Equipments/Valves/Butterfly Valves.jpg";
+import vBypass from "../../../assets/catalog/Mechanical Equipments/Valves/Bypass Valves.jpg";
+import vCheck from "../../../assets/catalog/Mechanical Equipments/Valves/Check Valves.jpg";
+import vControl from "../../../assets/catalog/Mechanical Equipments/Valves/Control Valves.jpg";
+import vDiaphragm from "../../../assets/catalog/Mechanical Equipments/Valves/Diaphragm Valves.jpg";
+import vGate from "../../../assets/catalog/Mechanical Equipments/Valves/Gate Valves.jpg";
+import vGlobe from "../../../assets/catalog/Mechanical Equipments/Valves/Globe Valves.jpg";
+import vNeedle from "../../../assets/catalog/Mechanical Equipments/Valves/Needle Valves.jpg";
+import vPinch from "../../../assets/catalog/Mechanical Equipments/Valves/Pinch Valves.jpg";
+import vPlug from "../../../assets/catalog/Mechanical Equipments/Valves/Plug Valves.jpg";
+import vRelief from "../../../assets/catalog/Mechanical Equipments/Valves/Pressure Relief Valves.jpg";
+import vSafety from "../../../assets/catalog/Mechanical Equipments/Valves/Safety Valves.jpg";
+import vSlide from "../../../assets/catalog/Mechanical Equipments/Valves/Slide Valves.jpg";
+import vSolenoid from "../../../assets/catalog/Mechanical Equipments/Valves/Solenoid Valves.jpg";
 import { CATALOG_CATEGORIES } from "../data";
 
 import type { CatalogDetailPage } from "./types";
@@ -30,23 +30,43 @@ const catalogItemImages = import.meta.glob("../../../assets/catalog/**/*.{jpg,jp
 }) as Record<string, string>;
 
 const FOLDER_BY_SLUG: Record<string, string> = {
-  pumps: "mechanical",
-  compressors: "mechanical",
-  pipes: "mechanical",
-  "heat-exchangers": "mechanical",
-  transmitters: "instrumentation",
-  "control-systems": "instrumentation",
-  "control-valves": "instrumentation",
-  "safety-detection": "instrumentation",
-  switchgear: "electrical",
-  transformers: "electrical",
-  motors: "electrical",
-  cables: "electrical",
-  "lighting-ups": "electrical",
-  lubricants: "chemicals",
-  "treatment-chemicals": "chemicals",
-  "drilling-fluids": "chemicals",
-  "cleaning-chemicals": "chemicals",
+  // Mechanical Solutions
+  "pumps-motors": "Mechanical Equipments/Pumps",
+  "valves": "Mechanical Equipments/Valves",
+  "compressors": "Mechanical Equipments/Compressors",
+  "gaskets-pipes-fittings-flanges": "Mechanical Equipments/Pipes & Fittings",
+  "heat-exchangers": "Mechanical Equipments/Heat Exchangers",
+
+  // Instrumentation & Control
+  "transmitters": "Instrumentation & Control/Transmitters",
+  "control-systems": "Instrumentation & Control/Control Systems",
+  "control-valves": "Instrumentation & Control/Control Valves",
+  "safety-detection": "Instrumentation & Control/Safety Detection",
+
+  // Electrical Systems
+  "switchgear": "Electric Systems/Switch gear",
+  "transformers": "Electric Systems/Transfomers",
+  "motors": "Electric Systems/Motors",
+  "cables": "Electric Systems/Cables",
+  "lighting-ups": "Electric Systems/Light & UPS",
+
+  // Static Equipments
+  "filteration-system": "Mechanical Equipments",
+  "pressure-vessels": "Mechanical Equipments",
+  "colums-towers": "Mechanical Equipments",
+  "skid-packages": "Mechanical Equipments",
+
+  // Chemical & Process
+  "lubricants": "Industrial Chemicals/Lubricants",
+  "drilling-fluids": "Industrial Chemicals/Drilling Fluids",
+  "treatment-chemicals": "Industrial Chemicals",
+  "cleaning-chemicals": "Industrial Chemicals",
+
+  // Marine & Offshore
+  "vlcc": "Marine & Offshore/VLCC",
+  "deck": "Marine & Offshore/Deck Equipment",
+  "engine-room": "Marine & Offshore/Engine Room Systems",
+  "safety-navigation": "Marine & Offshore/Safety & Navigatiion",
 };
 
 const STOP_WORDS = new Set([
