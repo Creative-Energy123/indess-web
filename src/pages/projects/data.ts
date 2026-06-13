@@ -7,6 +7,9 @@ import imgProject9 from "@/assets/projects/project 9.jpg";
 import imgProject12 from "@/assets/projects/project 12.webp";
 import imgProject13 from "@/assets/projects/project 13.webp";
 import imgProject16 from "@/assets/projects/project 16.webp";
+import pipe from "@/assets/projects/pipe-fittings.png";
+import diaphragm from "@/assets/projects/diaphragm.webp";
+import atlas from "@/assets/projects/Atlas-img.jpg"
 
 
 export type ProjectItem = {
@@ -94,6 +97,30 @@ export const projects: ProjectItem[] = [
     year: "2025",
     img: imgProject16,
     description: "No-Absestos, Insulation Kit, SWG Gaskets",
+  },
+  {
+    n: "PR/10",
+    title: "Altas Copco Compressor",
+    client: "ADNOC ONSHORE/UAE.",
+    year: "2025",
+    img: atlas,
+    description: "Atlas Copco Compressor ATEX approved.",
+  },
+  {
+    n: "PR/11",
+    title: "Pipes & Fittings & Flanges",
+    client: "Fertiglobe – UAE",
+    year: "2026",
+    img: pipe,
+    description: "Pipes, Fittings and Flanges ",
+  },
+  {
+    n: "PR/12",
+    title: "Diaphragm pump",
+    client: "MICODA – UAE.",
+    year: "2025",
+    img: diaphragm,
+    description: "Diaphragm pumps ",
   },
 
 ];
